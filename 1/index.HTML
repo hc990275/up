@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>小小郭</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            color: #333;
+            text-align: center;
+            padding: 20px;
+            margin: 0;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            opacity: 0; /* Initially set to transparent */
+            animation: fadeIn 1.5s ease-in-out forwards; /* Animation for fade-in effect */
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        h1 {
+            color: #3498db;
+        }
+
+        p {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        img {
+            border-radius: 50%;
+            max-width: 150px;
+            margin-bottom: 20px;
+        }
+
+        .background-image {
+            background-image: url('https://s11.ax1x.com/2024/02/02/pFQ3y11.jpg'); /* Replace with your background image URL */
+            background-size: cover;
+            background-position: center;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 20px;
+            cursor: pointer; /* Set cursor to pointer to indicate it's clickable */
+        }
+
+        .background-link {
+            display: block;
+            height: 100%;
+            width: 100%;
+            text-decoration: none;
+            color: inherit;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <a href="http://124.222.80.33/2" class="background-link">
+            <div class="background-image">
+                <!-- Additional content or background image -->
+            </div>
+        </a>
+
+        <img src="https://s11.ax1x.com/2024/02/02/pFQ3jAg.jpg" alt="儿子头像"> <!-- Replace with your avatar image URL -->
+        <h1>我的小可爱</h1>
+        <p>欢迎来到我们的小天地，这里记录着我们可爱儿子的成长历程。</p>
+
+        <script>
+            var birthDate = new Date('2017-10-05');
+            var currentDate = new Date();
+            var ageInMilliseconds = currentDate - birthDate;
+            var ageInSeconds = ageInMilliseconds / 1000;
+            var ageInMinutes = ageInSeconds / 60;
+            var ageInHours = ageInMinutes / 60;
+            var ageInDays = ageInHours / 24;
+
+            var years = Math.floor(ageInDays / 365);
+            var months = Math.floor((ageInDays % 365) / 30);
+            var days = Math.floor((ageInDays % 365) % 30);
+
+            document.write('<p>年龄：' + years + ' 岁 ' + months + ' 个月 ' + days + ' 天</p>');
+            document.write('<p>总共 ' + Math.floor(ageInDays) + ' 天</p>');
+        </script>
+    </div>
+
+</body>
+</html>
