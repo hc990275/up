@@ -1,121 +1,1 @@
-<!DOCTYPE html>
-<html lang="zh-CN">
- 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
- 
-<body>
-    <h3>青春不常在</h3>
-    <form action="" name="信息表单">
-        <table width="500">
-            <tr>
-                <td>姓名</td>
-                <td><input type="text" name="name" value="name"></td>
-            </tr> <!-- 第一行 -->
- 
-            <tr>
-                <td>性别：</td>
-                <td>
-                    <label for="nan">男</label> <input type="radio" id="nan" value="男" name="sex">
-                    <label for="nv">女</label> <input type="radio" id="nv" value="女" name="sex">
-                </td>
-            </tr><!-- 第二行 -->
- 
-            <tr>
-                <td>生日</td>
-                <td>
-                    <select name="" id="">
-                        <option value="">--请选择年份--</option>
-                        <option value="">2001</option>
-                        <option value="">2002</option>
-                    </select>
-                    <select name="" id="">
-                        <option value="">--请选择月份--</option>
-                        <option value="">1</option>
-                        <option value="">2</option>
-                    </select>
-                    <select name="" id="">
-                        <option value="">--请选日期--</option>
-                        <option value="">1</option>
-                        <option value="">2</option>
-                    </select>
-                </td>
-            </tr><!-- 第三行 -->
- 
-            <tr>
-                <td>所在地区</td>
-                <td>
-                    <input type="text" value="北京">
-                </td>
-            </tr><!-- 第四行 -->
- 
-            <tr>
-                <td>婚姻状况</td>
-                <td>
-                    <label for="未婚">未婚</label> <input type="radio" name="婚姻状况" value="未婚" id="未婚" checked="checked">
-                    <label for="离异">离异</label> <input type="radio" name="婚姻状况" value="离异" id="离异">
-                </td>
-            </tr><!-- 第五行 -->
- 
-            <tr>
-                <td>学历</td>
-                <td>
-                    <select name="" id="">
-                        <option value="">本科</option>
-                        <option value="" selected="selected">研究生</option>
-                        <option value="">博士</option>
-                    </select>
-                </td>
-            </tr> <!-- 第六行 -->
- 
-            <tr>
-                <td>喜欢类型</td>
-                <td>
-                    <label for="清纯">清纯</label> <input type="checkbox" id="清纯" name="类型" value="清纯">
-                    <label for="萝莉">萝莉</label> <input type="checkbox" id="萝莉" name="类型" value="萝莉">
-                    <label for="御姐">御姐</label> <input type="checkbox" id="御姐" name="类型" value="御姐">
-                </td>
-            </tr> <!-- 第七行 -->
- 
-            <tr>
-                <td>自我介绍</td>
-                <td>
-                    <textarea name="自我介绍" cols="30" rows="5" placeholder="请输入你的自我介绍"></textarea>
-                </td>
-            </tr><!-- 第八行 -->
- 
-            <tr>
-                <td>请上传你的照片</td>
-                <td> <input type="file"> </td>
-            </tr><!-- 第九行 -->
- 
-            <tr>
-                <td></td>
-                <td><input type="submit" value="提交"></td>
-            </tr><!-- 第十行 -->
- 
-            <tr>
-                <td></td>
-                <td><input type="checkbox" value="true">我同意将以上信息公开到我的社交账号</td>
-            </tr><!-- 第十一行 -->
- 
-            <tr>
-                <td></td>
-                <td>
-                    <h2>我承诺</h2>
-                    <ul>
-                        <li>真诚</li>
-                        <li>真心</li>
-                    </ul>
-                </td>
-            </tr><!-- 第十二行 -->
- 
-        </table>
-    </form>
- 
-</body>
- 
-</html>
+<!DOCTYPE  html><html  lang="zh-CN"><head>   <meta  charset="UTF-8">   <meta  name="viewport"  content="width=device-width,  initial-scale=1.0">   <title>Document</title></head><body>   <h3>青春不常在</h3>   <form  action="">     <div  class="form-group">       <label  for="name">姓名</label>       <input  type="text"  id="name"  name="name"  placeholder="姓名">     </div>  <!--  姓名字段  -->     <div  class="form-group">       <label  for="sex">性别</label>       <div  class="radio-buttons">         <label><input  type="radio"  name="sex"  value="男">男</label>         <label><input  type="radio"  name="sex"  value="女">女</label>       </div>  <!--  性别单选按钮  -->     </div>  <!--  性别字段  -->     <div  class="form-group">       <label  for="year">出生年份</label>       <select  id="year"  name="year">         <option  value="">--  请选择年份  --</option>       </select>  <!--  年份下拉菜单  -->       <label  for="month">出生月份</label>       <select  id="month"  name="month">         <option  value="">--  请选择月份  --</option>       </select>  <!--  月份下拉菜单  -->       <label  for="day">出生日期</label>       <select  id="day"  name="day">         <option  value="">--  请选择日期  --</option>       </select>  <!--  日期下拉菜单  -->     </div>  <!--  生日字段  -->   <script>     const  yearSelect  =  document.getElementById('year');     const  monthSelect  =  document.getElementById('month');     const  daySelect  =  document.getElementById('day');     //  获取当前年份     const  currentYear  =  new  Date().getFullYear();     const  startYear  =  1949;     //  动态生成年份选项     for  (let  year  =  currentYear;  year  >=  startYear;  year--)  {       const  option  =  document.createElement('option');       option.value  =  year;       option.textContent  =  year;       yearSelect.appendChild(option);     }     //  动态生成月份选项     const  monthSelect  =  document.getElementById('month');     for  (let  month  =  1;  month  <=  12;  month++)  {       const  option  =  document.createElement('option');       option.value  =  month;       option.textContent  =  month;       monthSelect.appendChild(option);     }     //  动态生成日期选项     const  daySelect  =  document.getElementById('day');     //  获取当前所选年份和月份     const  selectedYear  =  yearSelect.value;     const  selectedMonth  =  monthSelect.value;     //  根据所选年份和月份获取当月的天数     const  daysInMonth  =  new  Date(selectedYear,  selectedMonth,  0).getDate();     for  (let  day  =  1;  day  <=  daysInMonth;  day++)  {       const  option  =  document.createElement('option');       option.value  =  day;       option.textContent  =  day;       daySelect.appendChild(option);     }     //  监听年份选择器的变化     yearSelect.addEventListener('change',  function()  {       const  selectedYear  =  yearSelect.value;       const  selectedMonth  =  monthSelect.value;       //  清空日期选项       daySelect.innerHTML  =  '<option  value="">--  请选择日期  --</option>';       //  根据所选年份和月份获取当月的天数       const  daysInMonth  =  new  Date(selectedYear,  selectedMonth,  0).getDate();       for  (let  day  =  1;  day  <=  daysInMonth;  day++)  </script>    <div class="form-group">      <label for="area">所在地区</label>      <input type="text" id="area" name="area" placeholder="所在地区">    </div> <!-- 地区字段 -->    <div class="form-group">      <label for="marital-status">婚姻状况</label>      <div class="radio-buttons">        <label><input type="radio" name="marital-status" value="未婚" checked>未婚</label>        <label><input type="radio" name="marital-status" value="离异">离异</label>      </div> <!-- 婚姻状况单选按钮 -->    </div> <!-- 婚姻状况字段 -->    <div class="form-group">      <label for="education">学历</label>      <select id="education" name="education">        <option value="本科" selected>本科</option>        <option value="研究生">研究生</option>        <option value="博士">博士</option>      </select> <!-- 学历下拉菜单 -->    </div> <!-- 学历字段 -->    <div class="form-group">      <label for="types">喜欢类型</label>      <div class="checkboxes">        <label><input type="checkbox" name="types" value="清纯">清纯</label>        <label><input type="checkbox" name="types" value="萝莉">萝莉</label>        <label><input type="checkbox" name="types" value="御姐">御姐</label>      </div> <!-- 喜欢类型复选框 -->    </div> <!-- 喜欢类型字段 -->    <div class="form-group">      <label for="self-intro">自我介绍</label>      <textarea id="self-intro" name="self-intro" cols="30" rows="5" placeholder="请输入自我介绍"></textarea>    </div> <!-- 自我介绍字段 -->    <div class="form-group">      <input type="submit" value="提交">    </div> <!-- 提交按钮 -->    <div class="form-group">      <input type="checkbox" value="true">我同意将以上信息公开到我的社交账号    </div> <!-- 公开信息复选框 -->    <div class="form-group">      <h2>我承诺</h2>      <ul>        <li>真诚</li>        <li>真心</li>      </ul>    </div> <!-- 承诺字段 -->  </form></body></html>
