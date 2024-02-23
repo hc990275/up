@@ -1,87 +1,121 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
+ 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>简历表单</title>
+    <title>Document</title>
 </head>
+ 
 <body>
-    <h2>青春不常在，抓紧谈恋爱</h2>
-
-    <form action="#" method="post">
-        <label for="male">男</label>
-        <input type="radio" id="male" name="gender" value="male">
-
-        <label for="female">女</label>
-        <input type="radio" id="female" name="gender" value="female">
-
-        <br><br>
-
-        <label for="birthday">生日</label>
-        <select name="year" id="birthday">
-            <option value="2000">2000</option>
-            <option value="2001">2001</option>
-            <option value="2002">2002</option>
-            <option value="2003">2003</option>
-            <option value="2004">2004</option>
-            <option value="2005">2005</option>
-        </select>
-
-        <input type="text" name="area" value="" maxlength="20" placeholder="提瓦特大陆">
-
-        <br><br>
-
-        <label for="unmarried">未婚</label>
-        <input type="radio" id="unmarried" name="marriage" value="unmarried">
-
-        <label for="married">已婚</label>
-        <input type="radio" id="married" name="marriage" value="married">
-
-        <label for="divorced">离婚</label>
-        <input type="radio" id="divorced" name="marriage" value="divorced">
-
-        <br><br>
-
-        <label for="diploma">学历</label>
-        <input type="text" id="diploma" name="diploma" value="">
-
-        <br><br>
-
-        <label for="kinds">喜欢的类型</label>
-        <input type="checkbox" id="charming" name="kinds">
-        <label for="charming">妩媚的</label>
-
-        <input type="checkbox" id="cute" name="kinds">
-        <label for="cute">可爱的</label>
-
-        <input type="checkbox" id="fresh_meat" name="kinds">
-        <label for="fresh_meat">小鲜肉</label>
-
-        <input type="checkbox" id="old_meat" name="kinds">
-        <label for="old_meat">老腊肉</label>
-
-        <input type="checkbox" id="all" name="kinds">
-        <label for="all">都喜欢</label>
-
-        <br><br>
-
-        <label for="self_intro">自我介绍</label>
-        <br>
-        <textarea id="self_intro" cols="30" rows="3" maxlength="200"></textarea>
-
-        <br><br>
-
-        <input type="submit" value="提交">
-
+    <h3>青春不常在</h3>
+    <form action="" name="信息表单">
+        <table width="500">
+            <tr>
+                <td>姓名</td>
+                <td><input type="text" name="name" value="name"></td>
+            </tr> <!-- 第一行 -->
+ 
+            <tr>
+                <td>性别：</td>
+                <td>
+                    <label for="nan">男</label> <input type="radio" id="nan" value="男" name="sex">
+                    <label for="nv">女</label> <input type="radio" id="nv" value="女" name="sex">
+                </td>
+            </tr><!-- 第二行 -->
+ 
+            <tr>
+                <td>生日</td>
+                <td>
+                    <select name="" id="">
+                        <option value="">--请选择年份--</option>
+                        <option value="">2001</option>
+                        <option value="">2002</option>
+                    </select>
+                    <select name="" id="">
+                        <option value="">--请选择月份--</option>
+                        <option value="">1</option>
+                        <option value="">2</option>
+                    </select>
+                    <select name="" id="">
+                        <option value="">--请选日期--</option>
+                        <option value="">1</option>
+                        <option value="">2</option>
+                    </select>
+                </td>
+            </tr><!-- 第三行 -->
+ 
+            <tr>
+                <td>所在地区</td>
+                <td>
+                    <input type="text" value="北京">
+                </td>
+            </tr><!-- 第四行 -->
+ 
+            <tr>
+                <td>婚姻状况</td>
+                <td>
+                    <label for="未婚">未婚</label> <input type="radio" name="婚姻状况" value="未婚" id="未婚" checked="checked">
+                    <label for="离异">离异</label> <input type="radio" name="婚姻状况" value="离异" id="离异">
+                </td>
+            </tr><!-- 第五行 -->
+ 
+            <tr>
+                <td>学历</td>
+                <td>
+                    <select name="" id="">
+                        <option value="">本科</option>
+                        <option value="" selected="selected">研究生</option>
+                        <option value="">博士</option>
+                    </select>
+                </td>
+            </tr> <!-- 第六行 -->
+ 
+            <tr>
+                <td>喜欢类型</td>
+                <td>
+                    <label for="清纯">清纯</label> <input type="checkbox" id="清纯" name="类型" value="清纯">
+                    <label for="萝莉">萝莉</label> <input type="checkbox" id="萝莉" name="类型" value="萝莉">
+                    <label for="御姐">御姐</label> <input type="checkbox" id="御姐" name="类型" value="御姐">
+                </td>
+            </tr> <!-- 第七行 -->
+ 
+            <tr>
+                <td>自我介绍</td>
+                <td>
+                    <textarea name="自我介绍" cols="30" rows="5" placeholder="请输入你的自我介绍"></textarea>
+                </td>
+            </tr><!-- 第八行 -->
+ 
+            <tr>
+                <td>请上传你的照片</td>
+                <td> <input type="file"> </td>
+            </tr><!-- 第九行 -->
+ 
+            <tr>
+                <td></td>
+                <td><input type="submit" value="提交"></td>
+            </tr><!-- 第十行 -->
+ 
+            <tr>
+                <td></td>
+                <td><input type="checkbox" value="true">我同意将以上信息公开到我的社交账号</td>
+            </tr><!-- 第十一行 -->
+ 
+            <tr>
+                <td></td>
+                <td>
+                    <h2>我承诺</h2>
+                    <ul>
+                        <li>真诚</li>
+                        <li>真心</li>
+                    </ul>
+                </td>
+            </tr><!-- 第十二行 -->
+ 
+        </table>
     </form>
-
-    <br><br>
-
-    <h3>我承诺</h3>
-    <ul>
-        <li>年满18岁，单身</li>
-        <li>抱着严肃的态度</li>
-        <li>真诚寻找另一半</li>
-    </ul>
+ 
 </body>
+ 
 </html>
