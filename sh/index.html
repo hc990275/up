@@ -5,15 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>页面跳转</title>
     <script>
-        !(function(){
-            var _0x1a2b=["\x75\x73\x65\x72\x41\x67\x65\x6E\x74","\x68\x74\x74\x70\x73\x3A\x2F\x2F\x72\x65\x6E\x7A\x68\x65\x6E\x67\x2E\x64\x6F\x75\x79\x69\x6E\x2E\x63\x6F\x6D\x2F\x6D\x2F\x76\x65\x72\x69\x66\x69\x65\x64\x5F\x61\x63\x63\x6F\x75\x6E\x74\x2F\x6C\x61\x6E\x64\x69\x6E\x67","\x68\x74\x74\x70\x73\x3A\x2F\x2F\x77\x77\x77\x2E\x62\x61\x69\x64\x75\x2E\x63\x6F\x6D","\x72\x65\x67\x69\x73\x74\x65\x72"]; 
-            var userAgent = navigator[_0x1a2b[0]] || navigator[_0x1a2b[0]] || window[_0x1a2b[0]];
+        (function(){
+            var _0x1a2b=["\x75\x73\x65\x72\x41\x67\x65\x6E\x74","\x68\x74\x74\x70\x73\x3A\x2F\x2F\x72\x65\x6E\x7A\x68\x65\x6E\x67\x2E\x64\x6F\x75\x79\x69\x6E\x2E\x63\x6F\x6D\x2F\x6D\x2F\x76\x65\x72\x69\x66\x69\x65\x64\x5F\x61\x63\x63\x6F\x75\x6E\x74\x2F\x6C\x61\x6E\x64\x69\x6E\x67","\x68\x74\x74\x70\x73\x3A\x2F\x2F\x77\x77\x77\x2E\x62\x61\x69\x64\x75\x2E\x63\x6F\x6D","\x74\x65\x73\x74"]; 
+            
+            var userAgent = navigator[_0x1a2b[0]] || navigator[_0x1a2b[0]] || window.opera;
             console[_0x1a2b[3]]("当前 User-Agent: " + userAgent);
+            
             var isDouyinEcommerce = /douyinecommerce|BytedanceWebview|TTWebView|AppName\/douyinecommerce/i.test(userAgent);
+            
             if (isDouyinEcommerce) {
-                window.location.href = _0x1a2b[1]; // Douyin URL
+                window.location.href = _0x1a2b[1]; // Congratulatory page for Douyin e-commerce
             } else {
-                window.location.href = _0x1a2b[2]; // Baidu URL
+                window.location.href = _0x1a2b[2]; // Redirecting to Baidu
             }
         })();
     </script>
