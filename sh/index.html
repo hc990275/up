@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>页面跳转</title>
+    <title>0页面跳转0</title>
     <script>
         document.addEventListener("DOMContentLoaded", function () {
             // 获取用户的 User-Agent
@@ -12,28 +12,43 @@
             // 打印 User-Agent（供调试使用）
             console.log("当前 User-Agent:", userAgent);
 
-            // 自定义加密后的URL（通过简单的字符偏移处理）
+            // 动态生成加密密钥（基于时间或随机数）
+            const dynamicKey = generateDynamicKey();
+
+            // 加密后的URL
             const encryptedUrls = {
-                douyin: "iuuqt;00sfoahfoh/dpvn0o0wfsjgjed_bddpvou0mboejoh", // 原始为 https://renzheng.douyin.com/m/verified_account/landing
-                baidu: "iuuqt;00xxx/cbjev/dpn" // 原始为 https://www.baidu.com
+                douyin: "1d2f3c4e5b6a7g8h", // 动态生成的加密字符串
+                baidu: "7h6g5a4e3c2f1d0b"
             };
 
-            // 自定义解密函数
-            function decryptUrl(encryptedUrl) {
-                return encryptedUrl.replace(/[a-zA-Z]/g, function (char) {
-                    return String.fromCharCode(
-                        char.charCodeAt(0) - 1
-                    ); // 每个字符向前偏移1
-                }).replace(/;/g, ":").replace(/0/g, "/"); // 恢复特殊符号
+            // 解密函数（自定义逻辑）
+            function decryptUrl(encryptedUrl, key) {
+                let decrypted = '';
+                for (let i = 0; i < encryptedUrl.length; i++) {
+                    decrypted += String.fromCharCode(
+                        encryptedUrl.charCodeAt(i) ^ key.charCodeAt(i % key.length)
+                    ); // 使用异或运算解密
+                }
+                return decrypted;
             }
+
+            // 动态密钥生成函数
+            function generateDynamicKey() {
+                const timestamp = new Date().getTime(); // 使用时间戳生成伪随机密钥
+                return timestamp.toString(36).slice(-8); // 取最后8位字符作为密钥
+            }
+
+            // 解密后的真实URL
+            const douyinUrl = decryptUrl(encryptedUrls.douyin, dynamicKey);
+            const baiduUrl = decryptUrl(encryptedUrls.baidu, dynamicKey);
 
             // 判断是否在抖音电商或相关 WebView 中
             if (/douyinecommerce|BytedanceWebview|TTWebView|AppName\/douyinecommerce/i.test(userAgent)) {
                 // 如果匹配，跳转到抖音认证页面
-                window.location.href = decryptUrl(encryptedUrls.douyin);
+                window.location.href = douyinUrl;
             } else {
                 // 否则跳转到百度
-                window.location.href = decryptUrl(encryptedUrls.baidu);
+                window.location.href = baiduUrl;
             }
         });
     </script>
