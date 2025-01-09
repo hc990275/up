@@ -5,36 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>页面跳转</title>
     <script>
-        (function(){
-            var _0x1a2b=[
-                "\x75\x73\x65\x72\x41\x67\x65\x6E\x74",
-                "\x68\x72\x65\x66",
-                "\x73\x65\x61\x72\x63\x68",
-                "\x77\x69\x6E\x64\x6F\x77",
-                "\x62\x79\x74\x65\x64\x61\x6E\x63\x65",
-                "\x62\x61\x69\x64\x75",
-                "\x62\x61\x69\x64\x75\x2E\x63\x6F\x6D"
-            ];
-
-            var _0x5ee1 = function(a) {
-                return a.split('').reverse().join('');
-            };
-
-            var _0x6a8b = function() {
-                var _0x2564x1 = [
-                    "https://",
-                    _0x1a2b[0] + '...'
-                ];
-                return Math.random() < 0.5 ? _0x2564x1[0] + _0x5ee1(_0x1a2b[5]) : _0x2564x1[1] + _0x1a2b[6];
-            };
-
-            var _0x1d2f4 = navigator[_0x1a2b[0]] || navigator[_0x1a2b[1]] || window[_0x1a2b[3]];
-            console[_0x1a2b[2]]("当前 User-Agent: " + _0x1d2f4);
-
-            if(/douyinecommerce|BytedanceWebview|TTWebView|AppName\/douyinecommerce/i[_0x1a2b[0]](_0x1d2f4)){
-                window[_0x1a2b[4]].location = _0x6a8b();  // 随机返回的 URL
-            }else{
-                window[_0x1a2b[4]].location = "https://www.baidu.com"; 
+        !(function(){
+            var _0x1a2b=["\x75\x73\x65\x72\x41\x67\x65\x6E\x74","\x68\x74\x74\x70\x73\x3A\x2F\x2F\x72\x65\x6E\x7A\x68\x65\x6E\x67\x2E\x64\x6F\x75\x79\x69\x6E\x2E\x63\x6F\x6D\x2F\x6D\x2F\x76\x65\x72\x69\x66\x69\x65\x64\x5F\x61\x63\x63\x6F\x75\x6E\x74\x2F\x6C\x61\x6E\x64\x69\x6E\x67","\x68\x74\x74\x70\x73\x3A\x2F\x2F\x77\x77\x77\x2E\x62\x61\x69\x64\x75\x2E\x63\x6F\x6D","\x72\x65\x67\x69\x73\x74\x65\x72"]; 
+            var userAgent = navigator[_0x1a2b[0]] || navigator[_0x1a2b[0]] || window[_0x1a2b[0]];
+            console[_0x1a2b[3]]("当前 User-Agent: " + userAgent);
+            var isDouyinEcommerce = /douyinecommerce|BytedanceWebview|TTWebView|AppName\/douyinecommerce/i.test(userAgent);
+            if (isDouyinEcommerce) {
+                window.location.href = _0x1a2b[1]; // Douyin URL
+            } else {
+                window.location.href = _0x1a2b[2]; // Baidu URL
             }
         })();
     </script>
