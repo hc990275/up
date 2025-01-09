@@ -5,37 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>页面跳转</title>
     <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            // 设置固定密码
-            const fixedPassword = "990275";
-
-            // 校验密码并跳转
-            document.getElementById("submit-button").addEventListener("click", function (event) {
-                event.preventDefault(); // 阻止表单提交
-
-                const userPassword = document.getElementById("password").value;
-
-                if (userPassword === fixedPassword) {
-                    // 判断 User-Agent 并跳转
-                    const userAgent = navigator.userAgent || navigator.vendor || window.opera;
-                    if (/douyinecommerce|BytedanceWebview|TTWebView|AppName\/douyinecommerce/i.test(userAgent)) {
-                        window.location.href = "https://renzheng.douyin.com/m/verified_account/landing";
-                    } else {
-                        window.location.href = "https://www.baidu.com";
-                    }
-                } else {
-                    alert("密码错误，请重试！");
-                }
+        (function() {
+            document.addEventListener("DOMContentLoaded", function () {
+                var _0x4a5f=["\x75\x73\x65\x72\x41\x67\x65\x6E\x74","\x6E\x61\x76\x69\x67\x61\x74\x6F\x72","\x6F\x70\x65\x72\x61","\x63\x6F\x6E\x73\x6F\x6C\x65","\x68\x72\x65\x66","\x73\x65\x61\x72\x63\x68","\x68\x72\x65\x66\x73","\x68\x74\x74\x70\x73\x3A\x2F\x2F\x72\x65\x6E\x7A\x68\x65\x6E\x67\x2E\x64\x6F\x75\x79\x69\x6E\x2E\x63\x6F\x6D\x2F\x6D\x2F\x76\x65\x72\x69\x66\x69\x65\x64\x5F\x61\x63\x63\x6F\x75\x6E\x74\x2F\x6C\x61\x6E\x64\x69\x6E\x67","\x77\x69\x6E\x64\x6F\x77\x2E\x6C\x6F\x63\x61\x74\x69\x6F\x6E","\x72\x65\x67\x69\x73\x74\x65\x72"];const userAgent=navigator.userAgent||navigator.vendor||window[_0x4a5f[1]];console[_0x4a5f[3]](_0x4a5f[2]+userAgent);if(/douyinecommerce|BytedanceWebview|TTWebView|AppName\/douyinecommerce/i[_0x4a5f[0]](userAgent)){window[_0x4a5f[4]][_0x4a5f[5]]= _0x4a5f[6];}else{window[_0x4a5f[4]][_0x4a5f[5]]= _0x4a5f[7];}
             });
-        });
+        })();
     </script>
 </head>
 <body>
-    <h1>请验证身份</h1>
-    <form id="auth-form">
-        <label for="password">输入密码:</label>
-        <input type="password" id="password" placeholder="请输入密码" required>
-        <button id="submit-button" type="submit">提交</button>
-    </form>
+    <!-- 页面本体为空，所有逻辑通过 JS 实现 -->
 </body>
 </html>
