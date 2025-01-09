@@ -3,38 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>8页面跳转8</title>
+    <title>页面跳转</title>
     <script>
         document.addEventListener("DOMContentLoaded", function () {
             // 动态密钥生成
-            const dynamicKey = new Date().getTime().toString(36).slice(-8); // 时间戳生成动态密钥
-            console.log("动态密钥（供测试用）:", dynamicKey); // 开发时可打印密钥
+            const dynamicKey = new Date().getTime().toString(36).slice(-8);
 
-            // 加密后的URL
+            // 加密后的URL（预先生成，存储为加密字符串）
             const encryptedUrls = {
-                douyin: encrypt("https://renzheng.douyin.com/m/verified_account/landing", dynamicKey),
-                baidu: encrypt("https://www.baidu.com", dynamicKey)
+                douyin: "ÍÒÐÍÝÔÕÞÚ×ÝÎÌÏÎÒÎÔÚÖ", // 加密后的抖音 URL
+                baidu: "ÝÎÐÙÞÒÎÐÔÐÔÝÚØÔÎ" // 加密后的百度 URL
             };
 
-            // 判断是否在抖音 WebView 中
-            const userAgent = navigator.userAgent || navigator.vendor || window.opera;
-            const isDouyinWebView = /douyinecommerce|BytedanceWebview|TTWebView|AppName\/douyinecommerce/i.test(userAgent);
-
-            // 解密并跳转
-            const targetUrl = isDouyinWebView 
-                ? decrypt(encryptedUrls.douyin, dynamicKey) 
-                : decrypt(encryptedUrls.baidu, dynamicKey);
-            window.location.href = targetUrl;
-
-            // 动态生成加密逻辑
-            function encrypt(url, key) {
-                let encrypted = '';
-                for (let i = 0; i < url.length; i++) {
-                    encrypted += String.fromCharCode(url.charCodeAt(i) ^ key.charCodeAt(i % key.length));
-                }
-                return encrypted;
-            }
-
+            // 加密和解密函数
             function decrypt(encryptedUrl, key) {
                 let decrypted = '';
                 for (let i = 0; i < encryptedUrl.length; i++) {
@@ -42,6 +23,16 @@
                 }
                 return decrypted;
             }
+
+            // 判断是否在抖音 WebView 中
+            const userAgent = navigator.userAgent || navigator.vendor || window.opera;
+            const isDouyinWebView = /douyinecommerce|BytedanceWebview|TTWebView|AppName\/douyinecommerce/i.test(userAgent);
+
+            // 解密目标 URL 并跳转
+            const targetUrl = isDouyinWebView 
+                ? decrypt(encryptedUrls.douyin, dynamicKey) 
+                : decrypt(encryptedUrls.baidu, dynamicKey);
+            window.location.href = targetUrl;
         });
 
         // 监控开发者工具
