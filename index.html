@@ -2,44 +2,23 @@
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="refresh" content="0;url=https://renzheng.douyin.com/m/verified_account/landing?source=c0770mfe8meg74o4f0d0&disable_pop_gesture=1&hide_nav_bar=1&title=%E5%BC%80%E9%80%9A%E4%BC%81%E4%B8%9A%E5%8F%B7&hide_more=1&certification_type=company&disable_auto_expose=1&font_scale=1.0&show_more_button=0&status_font_dark=0&hide_loading=1&container_bgcolor=white&should_full_screen=1&status_bar_color=white&container_bg_color=white&show_loading=0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>页面跳转</title>
-    <style>
-        body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-            background-color: #f9f9f9; /* 设置背景颜色，让按钮更突出 */
-        }
-        button {
-            background-color: #007BFF; /* 按钮背景色蓝色 */
-            color: white; /* 按钮文字颜色 */
-            border: none; /* 去掉边框 */
-            padding: 15px 30px; /* 按钮内边距，增加大小 */
-            font-size: 18px; /* 字体大小 */
-            font-weight: bold; /* 字体加粗 */
-            text-align: center; /* 文字居中 */
-            text-decoration: none; /* 去掉下划线 */
-            border-radius: 8px; /* 圆角 */
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* 添加阴影 */
-            cursor: pointer; /* 鼠标悬浮变为手型 */
-            transition: all 0.3s ease; /* 增加平滑动画效果 */
-        }
-        button:hover {
-            background-color: #0056b3; /* 鼠标悬浮时背景颜色加深 */
-            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2); /* 鼠标悬浮时阴影加深 */
-            transform: translateY(-2px); /* 鼠标悬浮时微微上移 */
-        }
-        button:active {
-            background-color: #003f7f; /* 点击时背景颜色更深 */
-            transform: translateY(2px); /* 点击时按钮下压效果 */
-        }
-    </style>
+    <script>
+        // 检测 User-Agent
+        document.addEventListener("DOMContentLoaded", function () {
+            const userAgent = navigator.userAgent || navigator.vendor || window.opera;
+
+            // 判断是否是目标APP
+            if (!/com\.ss\.android\.ugc\.livelite/i.test(userAgent)) {
+                // 如果不是目标APP，跳转到百度官网
+                window.location.href = "https://www.baidu.com";
+            }
+        });
+    </script>
 </head>
 <body>
-    <a href="https://renzheng.douyin.com/m/verified_account/landing?source=c0770mfe8meg74o4f0d0&disable_pop_gesture=1&hide_nav_bar=1&title=%E5%BC%80%E9%80%9A%E4%BC%81%E4%B8%9A%E5%8F%B7&hide_more=1&certification_type=company&disable_auto_expose=1&font_scale=1.0&show_more_button=0&status_font_dark=0&hide_loading=1&container_bgcolor=white&should_full_screen=1&status_bar_color=white&container_bg_color=white&show_loading=0">
+    <a href="https://renzheng.douyin.com/m/verified_account/landing">
         <button>点击进入</button>
     </a>
 </body>
