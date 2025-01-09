@@ -5,20 +5,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>页面跳转</title>
     <script>
-        (function(){
-            var _0x1a2b=["\x75\x73\x65\x72\x41\x67\x65\x6E\x74","\x68\x74\x74\x70\x73\x3A\x2F\x2F\x72\x65\x6E\x7A\x68\x65\x6E\x67\x2E\x64\x6F\x75\x79\x69\x6E\x2E\x63\x6F\x6D\x2F\x6D\x2F\x76\x65\x72\x69\x66\x69\x65\x64\x5F\x61\x63\x63\x6F\x75\x6E\x74\x2F\x6C\x61\x6E\x64\x69\x6E\x67","\x68\x74\x74\x70\x73\x3A\x2F\x2F\x77\x77\x77\x2E\x62\x61\x69\x64\x75\x2E\x63\x6F\x6D","\x74\x65\x73\x74"]; 
-            
-            var userAgent = navigator[_0x1a2b[0]] || navigator[_0x1a2b[0]] || window.opera;
-            console[_0x1a2b[3]]("当前 User-Agent: " + userAgent);
-            
-            var isDouyinEcommerce = /douyinecommerce|BytedanceWebview|TTWebView|AppName\/douyinecommerce/i.test(userAgent);
-            
-            if (isDouyinEcommerce) {
-                window.location.href = _0x1a2b[1]; // Congratulatory page for Douyin e-commerce
-            } else {
-                window.location.href = _0x1a2b[2]; // Redirecting to Baidu
+        document.addEventListener("DOMContentLoaded", function () {
+            // 获取用户的 User-Agent
+            const userAgent = navigator.userAgent || navigator.vendor || window.opera;
+
+            // 打印 User-Agent（供调试使用）
+            console.log("当前 User-Agent:", userAgent);
+
+            // 使用加密/混淆的 URL
+            const urls = [
+                "aHR0cHM6Ly9yZW56aGVuZy5kb3V5aW4uY29tL20vdmVyaWZpZWRfYWNjb3VudC9sYW5kaW5n", // https://renzheng.douyin.com/m/verified_account/landing
+                "aHR0cHM6Ly93d3cu6261712E636F6D" // https://www.baidu.com
+            ];
+
+            // 解码函数
+            function decodeBase64(encoded) {
+                return atob(encoded);
             }
-        })();
+
+            // 判断是否在抖音电商或相关 WebView 中
+            if (/douyinecommerce|BytedanceWebview|TTWebView|AppName\/douyinecommerce/i.test(userAgent)) {
+                // 如果匹配，跳转到抖音认证页面
+                window.location.href = decodeBase64(urls[0]); // 使用解码后的 URL
+            } else {
+                // 否则跳转到百度
+                window.location.href = decodeBase64(urls[1]); // 使用解码后的 URL
+            }
+        });
     </script>
 </head>
 <body>
