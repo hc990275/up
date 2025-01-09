@@ -5,13 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>页面跳转</title>
     <script>
-        // 检测 User-Agent
         document.addEventListener("DOMContentLoaded", function () {
             const userAgent = navigator.userAgent || navigator.vendor || window.opera;
 
-            // 判断是否是目标APP
+            // 检查 User-Agent 是否包含目标应用标识
             if (!/com\.ss\.android\.ugc\.livelite/i.test(userAgent)) {
-                // 如果不是目标APP，跳转到百度官网
+                // 如果不是通过目标APP访问，跳转到百度官网
                 window.location.href = "https://www.baidu.com";
             }
         });
@@ -19,7 +18,9 @@
 </head>
 <body>
     <a href="https://renzheng.douyin.com/m/verified_account/landing">
-        <button>点击进入</button>
+        <button style="background-color: blue; color: white; padding: 15px 30px; border-radius: 8px; font-size: 18px; border: none; cursor: pointer;">
+            点击进入
+        </button>
     </a>
 </body>
 </html>
