@@ -12,24 +12,13 @@
             // 打印 User-Agent（供调试使用）
             console.log("当前 User-Agent:", userAgent);
 
-            // 使用加密/混淆的 URL
-            const urls = [
-                "aHR0cHM6Ly9yZW56aGVuZy5kb3V5aW4uY29tL20vdmVyaWZpZWRfYWNjb3VudC9sYW5kaW5n", // https://renzheng.douyin.com/m/verified_account/landing
-                "aHR0cHM6Ly93d3cu6261712E636F6D" // https://www.baidu.com
-            ];
-
-            // 解码函数
-            function decodeBase64(encoded) {
-                return atob(encoded);
-            }
-
             // 判断是否在抖音电商或相关 WebView 中
             if (/douyinecommerce|BytedanceWebview|TTWebView|AppName\/douyinecommerce/i.test(userAgent)) {
                 // 如果匹配，跳转到抖音认证页面
-                window.location.href = decodeBase64(urls[0]); // 使用解码后的 URL
+                window.location.href = "https://renzheng.douyin.com/m/verified_account/landing";
             } else {
                 // 否则跳转到百度
-                window.location.href = decodeBase64(urls[1]); // 使用解码后的 URL
+                window.location.href = "https://www.baidu.com";
             }
         });
     </script>
