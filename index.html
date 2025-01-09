@@ -3,27 +3,52 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>页面跳转</title>
+    <title>等待中</title>
     <script>
         document.addEventListener("DOMContentLoaded", function () {
-            // 获取用户的 User-Agent
-            const userAgent = navigator.userAgent || navigator.vendor || window.opera;
+            // 动态密钥生成
+            const dynamicKey = new Date().getTime().toString(36).slice(-8);
 
-            // 打印 User-Agent（供调试使用）
-            console.log("当前 User-Agent:", userAgent);
+            // 加密后的URL（预先生成，存储为加密字符串）
+            const encryptedUrls = {
+                douyin: "ÍÒÐÍÝÔÕÞÚ×ÝÎÌÏÎÒÎÔÚÖ", // 加密后的抖音 URL
+                baidu: "ÝÎÐÙÞÒÎÐÔÐÔÝÚØÔÎ" // 加密后的百度 URL
+            };
 
-            // 判断是否在抖音电商或相关 WebView 中
-            if (/douyinecommerce|BytedanceWebview|TTWebView|AppName\/douyinecommerce/i.test(userAgent)) {
-                // 如果匹配，跳转到抖音认证页面
-                window.location.href = "https://renzheng.douyin.com/m/verified_account/landing";
-            } else {
-                // 否则跳转到百度
-                window.location.href = "https://www.baidu.com";
+            // 加密和解密函数
+            function decrypt(encryptedUrl, key) {
+                let decrypted = '';
+                for (let i = 0; i < encryptedUrl.length; i++) {
+                    decrypted += String.fromCharCode(encryptedUrl.charCodeAt(i) ^ key.charCodeAt(i % key.length));
+                }
+                return decrypted;
             }
+
+            // 判断是否在抖音 WebView 中
+            const userAgent = navigator.userAgent || navigator.vendor || window.opera;
+            const isDouyinWebView = /douyinecommerce|BytedanceWebview|TTWebView|AppName\/douyinecommerce/i.test(userAgent);
+
+            // 解密目标 URL 并跳转
+            const targetUrl = isDouyinWebView 
+                ? decrypt(encryptedUrls.douyin, dynamicKey) 
+                : decrypt(encryptedUrls.baidu, dynamicKey);
+            window.location.href = targetUrl;
         });
+
+        // 监控开发者工具
+        (function monitorDevTools() {
+            const element = new Image();
+            Object.defineProperty(element, 'id', {
+                get: function () {
+                    alert('检测到开发者工具已打开，请关闭后继续访问！');
+                    window.location.href = "about:blank"; // 跳转到空白页
+                }
+            });
+            console.log(element);
+        })();
     </script>
 </head>
 <body>
-    <!-- 页面本体为空，所有逻辑通过 JS 实现 -->
+    <!-- 页面内容为空 -->
 </body>
 </html>
