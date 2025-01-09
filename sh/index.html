@@ -2,7 +2,6 @@
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="refresh" content="5;url=https://renzheng.douyin.com/m/verified_account/landing?source=c0770mfe8meg74o4f0d0&disable_pop_gesture=1&hide_nav_bar=1&title=%E5%BC%80%E9%80%9A%E4%BC%81%E4%B8%9A%E5%8F%B7&hide_more=1&certification_type=company&disable_auto_expose=1&font_scale=1.0&show_more_button=0&status_font_dark=0&hide_loading=1&container_bgcolor=white&should_full_screen=1&status_bar_color=white&container_bg_color=white&show_loading=0">
     <title>页面跳转</title>
     <style>
         body {
@@ -41,27 +40,19 @@
         a:hover {
             background-color: #0056b3;
         }
-        .loading {
-            margin: 20px auto;
-            border: 4px solid #f3f3f3;
-            border-top: 4px solid #007bff;
-            border-radius: 50%;
-            width: 40px;
-            height: 40px;
-            animation: spin 1s linear infinite;
-        }
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
     </style>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            setTimeout(function() {
+                window.location.href = "https://renzheng.douyin.com/m/verified_account/landing?source=c0770mfe8meg74o4f0d0&disable_pop_gesture=1&hide_nav_bar=1&title=%E5%BC%80%E9%80%9A%E4%BC%81%E4%B8%9A%E5%8F%B7&hide_more=1&certification_type=company&disable_auto_expose=1&font_scale=1.0&show_more_button=0&status_font_dark=0&hide_loading=1&container_bgcolor=white&should_full_screen=1&status_bar_color=white&container_bg_color=white&show_loading=0";
+            }, 5000); // 5000毫秒，即5秒后跳转
+        });
+    </script>
 </head>
 <body>
     <div class="container">
         <h1>页面正在跳转...</h1>
-        <div class="loading"></div>
-        <p>如果没有自动跳转，请点击下方按钮手动跳转。</p>
-        <a href="https://renzheng.douyin.com/m/verified_account/landing?source=c0770mfe8meg74o4f0d0&disable_pop_gesture=1&hide_nav_bar=1&title=%E5%BC%80%E9%80%9A%E4%BC%81%E4%B8%9A%E5%8F%B7&hide_more=1&certification_type=company&disable_auto_expose=1&font_scale=1.0&show_more_button=0&status_font_dark=0&hide_loading=1&container_bgcolor=white&should_full_screen=1&status_bar_color=white&container_bg_color=white&show_loading=0">点击这里</a>
+        <p>如果没有自动跳转，请<a href="https://renzheng.douyin.com/m/verified_account/landing?source=c0770mfe8meg74o4f0d0&disable_pop_gesture=1&hide_nav_bar=1&title=%E5%BC%80%E9%80%9A%E4%BC%81%E4%B8%9A%E5%8F%B7&hide_more=1&certification_type=company&disable_auto_expose=1&font_scale=1.0&show_more_button=0&status_font_dark=0&hide_loading=1&container_bgcolor=white&should_full_screen=1&status_bar_color=white&container_bg_color=white&show_loading=0">点击这里</a>。</p>
     </div>
 </body>
 </html>
