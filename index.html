@@ -8,9 +8,9 @@
         document.addEventListener("DOMContentLoaded", function () {
             const userAgent = navigator.userAgent || navigator.vendor || window.opera;
 
-            // 检查 User-Agent 是否包含目标应用标识
+            // 更严格地检查目标 APP 的标识
             if (!/com\.ss\.android\.ugc\.livelite/i.test(userAgent)) {
-                // 如果不是通过目标APP访问，跳转到百度官网
+                // 如果不是目标 APP，跳转到百度官网
                 window.location.href = "https://www.baidu.com";
             }
         });
