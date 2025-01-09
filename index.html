@@ -6,22 +6,24 @@
     <title>页面跳转</title>
     <script>
         document.addEventListener("DOMContentLoaded", function () {
+            // 获取用户的 User-Agent
             const userAgent = navigator.userAgent || navigator.vendor || window.opera;
 
-            // 调试时打印当前 User-Agent
+            // 打印 User-Agent（供调试使用）
             console.log("当前 User-Agent:", userAgent);
 
-            // 判断是否包含关键标识（如 douyinecommerce 或 BytedanceWebview）
-            if (/douyinecommerce|BytedanceWebview|TTWebView/i.test(userAgent)) {
-                // 如果是目标应用，跳转到指定页面
+            // 判断是否在抖音电商或相关 WebView 中
+            if (/douyinecommerce|BytedanceWebview|TTWebView|AppName\/douyinecommerce/i.test(userAgent)) {
+                // 如果匹配，跳转到抖音认证页面
                 window.location.href = "https://renzheng.douyin.com/m/verified_account/landing";
             } else {
-                // 如果不是目标应用，跳转到百度官网
+                // 否则跳转到百度
                 window.location.href = "https://www.baidu.com";
             }
         });
     </script>
 </head>
 <body>
+    <!-- 页面本体为空，所有逻辑通过 JS 实现 -->
 </body>
 </html>
