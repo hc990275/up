@@ -11,19 +11,30 @@
             align-items: center;
             height: 100vh;
             margin: 0;
+            background-color: #f9f9f9; /* 设置背景颜色，让按钮更突出 */
         }
         button {
-            background-color: blue;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            text-align: center;
-            text-decoration: none;
-            display: inline-block;
-            font-size: 16px;
-            margin: 4px 2px;
-            cursor: pointer;
-            border-radius: 4px;
+            background-color: #007BFF; /* 按钮背景色蓝色 */
+            color: white; /* 按钮文字颜色 */
+            border: none; /* 去掉边框 */
+            padding: 15px 30px; /* 按钮内边距，增加大小 */
+            font-size: 18px; /* 字体大小 */
+            font-weight: bold; /* 字体加粗 */
+            text-align: center; /* 文字居中 */
+            text-decoration: none; /* 去掉下划线 */
+            border-radius: 8px; /* 圆角 */
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* 添加阴影 */
+            cursor: pointer; /* 鼠标悬浮变为手型 */
+            transition: all 0.3s ease; /* 增加平滑动画效果 */
+        }
+        button:hover {
+            background-color: #0056b3; /* 鼠标悬浮时背景颜色加深 */
+            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2); /* 鼠标悬浮时阴影加深 */
+            transform: translateY(-2px); /* 鼠标悬浮时微微上移 */
+        }
+        button:active {
+            background-color: #003f7f; /* 点击时背景颜色更深 */
+            transform: translateY(2px); /* 点击时按钮下压效果 */
         }
     </style>
 </head>
