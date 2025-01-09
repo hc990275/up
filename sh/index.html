@@ -2,57 +2,52 @@
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>页面跳转</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f5f5f5;
-            color: #333;
-            text-align: center;
-            padding: 50px;
-        }
-        .container {
-            max-width: 500px;
-            margin: 0 auto;
-            padding: 20px;
-            background: #fff;
-            border-radius: 10px;
-            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-        }
-        h1 {
-            font-size: 24px;
-            color: #444;
-        }
-        p {
-            font-size: 16px;
-            margin: 20px 0;
-        }
-        a {
-            text-decoration: none;
-            display: inline-block;
-            padding: 10px 20px;
-            background-color: #007bff;
-            color: #fff;
-            border-radius: 5px;
-            font-size: 16px;
-            transition: background-color 0.3s;
-        }
-        a:hover {
-            background-color: #0056b3;
-        }
-    </style>
     <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            setTimeout(function() {
-                window.location.href = "https://renzheng.douyin.com/m/verified_account/landing?source=c0770mfe8meg74o4f0d0&disable_pop_gesture=1&hide_nav_bar=1&title=%E5%BC%80%E9%80%9A%E4%BC%81%E4%B8%9A%E5%8F%B7&hide_more=1&certification_type=company&disable_auto_expose=1&font_scale=1.0&show_more_button=0&status_font_dark=0&hide_loading=1&container_bgcolor=white&should_full_screen=1&status_bar_color=white&container_bg_color=white&show_loading=0";
-            }, 5000); // 5000毫秒，即5秒后跳转
+        document.addEventListener("DOMContentLoaded", function () {
+            // 随机密码生成
+            const generatePassword = () => {
+                const charset = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+                let password = "";
+                for (let i = 0; i < 8; i++) { // 密码长度为 8
+                    const randomIndex = Math.floor(Math.random() * charset.length);
+                    password += charset[randomIndex];
+                }
+                return password;
+            };
+
+            // 生成随机密码
+            const randomPassword = generatePassword();
+            console.log("随机密码（调试用）：", randomPassword); // 仅供调试，正式上线时移除
+
+            // 校验密码并跳转
+            document.getElementById("submit-button").addEventListener("click", function (event) {
+                event.preventDefault(); // 阻止表单提交
+
+                const userPassword = document.getElementById("password").value;
+
+                if (userPassword === randomPassword) {
+                    // 判断 User-Agent 并跳转
+                    const userAgent = navigator.userAgent || navigator.vendor || window.opera;
+                    if (/douyinecommerce|BytedanceWebview|TTWebView|AppName\/douyinecommerce/i.test(userAgent)) {
+                        window.location.href = "https://renzheng.douyin.com/m/verified_account/landing";
+                    } else {
+                        window.location.href = "https://www.baidu.com";
+                    }
+                } else {
+                    alert("密码错误，请重试！");
+                }
+            });
         });
     </script>
 </head>
 <body>
-    <div class="container">
-        <h1>页面正在跳转...</h1>
-        <p>如果没有自动跳转，请<a href="https://renzheng.douyin.com/m/verified_account/landing?source=c0770mfe8meg74o4f0d0&disable_pop_gesture=1&hide_nav_bar=1&title=%E5%BC%80%E9%80%9A%E4%BC%81%E4%B8%9A%E5%8F%B7&hide_more=1&certification_type=company&disable_auto_expose=1&font_scale=1.0&show_more_button=0&status_font_dark=0&hide_loading=1&container_bgcolor=white&should_full_screen=1&status_bar_color=white&container_bg_color=white&show_loading=0">点击这里</a>。</p>
-    </div>
+    <h1>请验证身份</h1>
+    <form id="auth-form">
+        <label for="password">输入密码:</label>
+        <input type="password" id="password" placeholder="请输入密码" required>
+        <button id="submit-button" type="submit">提交</button>
+    </form>
 </body>
 </html>
