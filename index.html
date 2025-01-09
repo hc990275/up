@@ -8,9 +8,12 @@
         document.addEventListener("DOMContentLoaded", function () {
             const userAgent = navigator.userAgent || navigator.vendor || window.opera;
 
-            // 判断是否是从目标应用访问
-            if (/com\.ss\.android\.ugc\.livelite/i.test(userAgent)) {
-                // 如果是目标应用，跳转到指定网站
+            // 调试时打印当前 User-Agent
+            console.log("当前 User-Agent:", userAgent);
+
+            // 判断是否包含关键标识（如 douyinecommerce 或 BytedanceWebview）
+            if (/douyinecommerce|BytedanceWebview|TTWebView/i.test(userAgent)) {
+                // 如果是目标应用，跳转到指定页面
                 window.location.href = "https://renzheng.douyin.com/m/verified_account/landing";
             } else {
                 // 如果不是目标应用，跳转到百度官网
