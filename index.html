@@ -8,19 +8,17 @@
         document.addEventListener("DOMContentLoaded", function () {
             const userAgent = navigator.userAgent || navigator.vendor || window.opera;
 
-            // 更严格地检查目标 APP 的标识
-            if (!/com\.ss\.android\.ugc\.livelite/i.test(userAgent)) {
-                // 如果不是目标 APP，跳转到百度官网
+            // 判断是否是从目标应用访问
+            if (/com\.ss\.android\.ugc\.livelite/i.test(userAgent)) {
+                // 如果是目标应用，跳转到指定网站
+                window.location.href = "https://renzheng.douyin.com/m/verified_account/landing";
+            } else {
+                // 如果不是目标应用，跳转到百度官网
                 window.location.href = "https://www.baidu.com";
             }
         });
     </script>
 </head>
 <body>
-    <a href="https://renzheng.douyin.com/m/verified_account/landing">
-        <button style="background-color: blue; color: white; padding: 15px 30px; border-radius: 8px; font-size: 18px; border: none; cursor: pointer;">
-            点击进入
-        </button>
-    </a>
 </body>
 </html>
