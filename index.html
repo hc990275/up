@@ -3,23 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>更好看的网页</title>
+    <title>气球点击游戏</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <header>
-        <h1>欢迎来到更好看的网页</h1>
-        <p>这里可以展示更多内容并提供更好的用户体验</p>
+        <h1>🎈 气球点击游戏 🎈</h1>
+        <p>点击气球得分！看看你能得多少分？</p>
     </header>
     <main>
-        <section class="content">
-            <h2>特色内容</h2>
-            <p>这个网页使用了现代设计风格，提供清晰的排版和易于阅读的内容。</p>
-            <button class="cta-button">点击了解更多</button>
-        </section>
+        <div id="game-container">
+            <!-- 气球会动态生成 -->
+        </div>
+        <div id="score-container">
+            <h2>得分：<span id="score">0</span></h2>
+        </div>
     </main>
     <footer>
-        <p>&copy; 2025 更好看的网页 | 设计精美，注重细节</p>
+        <p>&copy; 2025 好玩的小游戏 | 设计好玩又有趣</p>
     </footer>
+    <script src="script.js"></script>
 </body>
 </html>
