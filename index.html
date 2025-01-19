@@ -1,63 +1,25 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>页面跳转</title>
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            // 动态密钥生成
-            const dynamicKey = new Date().getTime().toString(36).slice(-8); // 时间戳生成动态密钥
-            console.log("动态密钥（供测试用）:", dynamicKey); // 开发时可打印密钥
-
-            // 加密后的URL
-            const encryptedUrls = {
-                douyin: encrypt("https://renzheng.douyin.com/m/verified_account/landing", dynamicKey),
-                baidu: encrypt("https://www.baidu.com", dynamicKey)
-            };
-
-            // 判断是否在抖音 WebView 中
-            const userAgent = navigator.userAgent || navigator.vendor || window.opera;
-            const isDouyinWebView = /douyinecommerce|BytedanceWebview|TTWebView|AppName\/douyinecommerce/i.test(userAgent);
-
-            // 解密并跳转
-            const targetUrl = isDouyinWebView 
-                ? decrypt(encryptedUrls.douyin, dynamicKey) 
-                : decrypt(encryptedUrls.baidu, dynamicKey);
-            window.location.href = targetUrl;
-
-            // 动态生成加密逻辑
-            function encrypt(url, key) {
-                let encrypted = '';
-                for (let i = 0; i < url.length; i++) {
-                    encrypted += String.fromCharCode(url.charCodeAt(i) ^ key.charCodeAt(i % key.length));
-                }
-                return encrypted;
-            }
-
-            function decrypt(encryptedUrl, key) {
-                let decrypted = '';
-                for (let i = 0; i < encryptedUrl.length; i++) {
-                    decrypted += String.fromCharCode(encryptedUrl.charCodeAt(i) ^ key.charCodeAt(i % key.length));
-                }
-                return decrypted;
-            }
-        });
-
-        // 监控开发者工具
-        (function monitorDevTools() {
-            const element = new Image();
-            Object.defineProperty(element, 'id', {
-                get: function () {
-                    alert('检测到开发者工具已打开，请关闭后继续访问！');
-                    window.location.href = "about:blank"; // 跳转到空白页
-                }
-            });
-            console.log(element);
-        })();
-    </script>
+    <title>更好看的网页</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <!-- 页面内容为空 -->
+    <header>
+        <h1>欢迎来到更好看的网页</h1>
+        <p>这里可以展示更多内容并提供更好的用户体验</p>
+    </header>
+    <main>
+        <section class="content">
+            <h2>特色内容</h2>
+            <p>这个网页使用了现代设计风格，提供清晰的排版和易于阅读的内容。</p>
+            <button class="cta-button">点击了解更多</button>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2025 更好看的网页 | 设计精美，注重细节</p>
+    </footer>
 </body>
 </html>
