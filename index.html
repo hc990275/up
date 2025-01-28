@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>春节倒计时</title>
+    <title>2025年春节倒计时</title>
     <style>
         body {
             font-family: 'Microsoft Yahei', Arial, sans-serif;
@@ -33,10 +33,6 @@
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
             animation: fadeIn 2s ease-in-out;
         }
-        #year {
-            margin-bottom: 15px;
-            font-size: 1.2em;
-        }
         footer {
             margin-top: 20px;
             font-size: 1em;
@@ -64,54 +60,52 @@
     </style>
 </head>
 <body>
-    <h1>春节倒计时</h1>
-    <div id="year"></div>
+    <h1>2025年春节倒计时</h1>
     <div id="countdown">正在计算...</div>
     <footer>
-        <p>愿您春节喜相逢，</p>
-        <p>家家户户乐融融。</p>
-        <p>花开富贵迎新岁，</p>
-        <p>万事如意享太平。</p>
+        <h2>辞旧迎新</h2>
+        <p>灯火辉煌映长街，</p>
+        <p>鞭炮声声辞旧年。</p>
+        <p>春风化雨迎新岁，</p>
+        <p>笑语盈门庆团圆。</p>
+        <p>年夜饭香满堂间，</p>
+        <p>亲情暖暖融心田。</p>
+        <p>星河璀璨梦初起，</p>
+        <p>万物更新福无限。</p>
+        <p>愿新年喜乐常在，</p>
+        <p>鸿运当头步步高。</p>
+        <p>阖家安康添瑞气，</p>
+        <p>人间尽是好年华！</p>
+        <div class="author">—— 郭承锐</div>
     </footer>
 
     <script>
-        function getNextSpringFestivalDate() {
-            const currentYear = new Date().getFullYear();
-            const springFestivalDates = {
-                2025: "2025-01-29T00:00:00",
-                2026: "2026-02-17T00:00:00",
-                2027: "2027-02-06T00:00:00"
-            };
-
-            let springFestivalDate = new Date(springFestivalDates[currentYear]);
-            const now = new Date();
-
-            if (now > springFestivalDate) {
-                springFestivalDate = new Date(springFestivalDates[currentYear + 1]);
-            }
-
-            return springFestivalDate;
-        }
-
         function updateCountdown() {
             const now = new Date();
-            const springFestivalDate = getNextSpringFestivalDate();
-            const timeDifference = springFestivalDate.getTime() - now.getTime(); // 精确到毫秒
+            const springFestival2025 = new Date("2025-01-29T00:00:00");
+            const timeDifference = springFestival2025.getTime() - now.getTime(); // 毫秒差值
 
-            // 获取年份提示
-            const year = springFestivalDate.getFullYear();
-            document.getElementById("year").innerText = `正在倒计时到 ${year} 年春节`;
+            const countdownElement = document.getElementById("countdown");
 
             if (timeDifference > 0) {
+                // 距离春节还有多少时间
                 const days = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
                 const hours = Math.floor((timeDifference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
                 const minutes = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
                 const seconds = Math.floor((timeDifference % (1000 * 60)) / 1000);
 
-                document.getElementById("countdown").innerText = 
-                    `距离春节还有 ${days} 天 ${hours} 小时 ${minutes} 分钟 ${seconds} 秒`;
+                countdownElement.innerText = 
+                    `距离2025年春节还有 ${days} 天 ${hours} 小时 ${minutes} 分钟 ${seconds} 秒`;
             } else {
-                document.getElementById("countdown").innerText = "春节快乐！";
+                // 已经过了春节，计算过了多少时间
+                const elapsedTime = now.getTime() - springFestival2025.getTime();
+                const days = Math.floor(elapsedTime / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((elapsedTime % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((elapsedTime % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((elapsedTime % (1000 * 60)) / 1000);
+
+                countdownElement.innerText = 
+                    `2025年已经开始了 ${days} 天 ${hours} 小时 ${minutes} 分钟 ${seconds} 秒`;
             }
         }
 
