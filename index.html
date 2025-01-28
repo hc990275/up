@@ -3,105 +3,106 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>除夕夜祝福</title>
+    <title>春节倒计时</title>
     <style>
-        /* 全局样式 */
         body {
-            font-family: "Microsoft YaHei", Arial, sans-serif;
-            background: linear-gradient(to bottom, #ffecd2, #fcb69f);
-            color: #333;
+            font-family: 'Microsoft Yahei', Arial, sans-serif;
+            background: linear-gradient(135deg, #FF7F50, #FFD700);
+            color: #fff;
+            text-align: center;
             margin: 0;
             padding: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
         }
-
-        /* 顶部标题样式 */
-        header {
-            background-color: #ff6f61;
-            color: white;
-            padding: 20px 0;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-            text-align: center;
-        }
-
         h1 {
-            margin: 0;
-            font-size: 2.5rem;
-            letter-spacing: 2px;
+            font-size: 3em;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+            animation: pulse 1.5s infinite;
         }
-
-        /* 主体内容 */
-        main {
-            text-align: center;
-            padding: 30px 15px;
-        }
-
-        p {
-            font-size: 1.2rem;
-            margin: 10px 0 30px;
-            color: #555;
-        }
-
-        /* 图片样式 */
-        img {
-            width: 60%;
-            max-width: 500px;
-            height: auto;
-            border-radius: 15px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-            transition: transform 0.3s;
-        }
-
-        img:hover {
-            transform: scale(1.05);
-        }
-
-        /* 按钮样式 */
-        button {
-            margin-top: 20px;
-            padding: 12px 30px;
-            font-size: 1rem;
+        #countdown {
+            font-size: 1.5em;
             font-weight: bold;
-            color: white;
-            background-color: #ff6f61;
-            border: none;
-            border-radius: 25px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            cursor: pointer;
-            transition: all 0.3s;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 15px 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            animation: fadeIn 2s ease-in-out;
         }
-
-        button:hover {
-            background-color: #e05550;
-            transform: translateY(-3px);
-        }
-
-        button:active {
-            transform: translateY(2px);
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-        }
-
-        /* 脚注样式 */
         footer {
-            text-align: center;
-            padding: 10px 0;
-            margin-top: 30px;
-            background-color: #ffd6cc;
-            color: #333;
-            font-size: 0.9rem;
+            margin-top: 20px;
+            font-size: 0.9em;
+            opacity: 0.8;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.1);
+            }
+        }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
     </style>
 </head>
 <body>
-    <header>
-        <h1>除夕夜祝福</h1>
-    </header>
-    <main>
-        <p>新年将至，愿你阖家幸福，万事如意！</p>
-        <img src="https://via.placeholder.com/600x400" alt="新春快乐">
-        <button onclick="alert('祝福送给你：愿你新年吉祥如意！')">点击领取祝福</button>
-    </main>
-    <footer>
-        © 2025 除夕夜祝福 | 愿您新年快乐！
-    </footer>
+    <h1>春节倒计时</h1>
+    <div id="countdown">正在计算...</div>
+    <footer>愿您度过一个幸福美满的春节！</footer>
+
+    <script>
+        function getNextSpringFestivalDate() {
+            const currentYear = new Date().getFullYear();
+            const springFestivalDates = {
+                2025: "2025-01-29",
+                2026: "2026-02-17",
+                2027: "2027-02-06"
+            };
+
+            let springFestivalDate = new Date(springFestivalDates[currentYear]);
+            const now = new Date();
+
+            if (now > springFestivalDate) {
+                springFestivalDate = new Date(springFestivalDates[currentYear + 1]);
+            }
+
+            return springFestivalDate;
+        }
+
+        function updateCountdown() {
+            const now = new Date();
+            const springFestivalDate = getNextSpringFestivalDate();
+            const timeDifference = springFestivalDate - now;
+
+            if (timeDifference > 0) {
+                const days = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((timeDifference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((timeDifference % (1000 * 60)) / (1000 * 60));
+                const seconds = Math.floor((timeDifference % (1000)) / 1000);
+
+                document.getElementById("countdown").innerText = 
+                    `距离春节还有 ${days} 天 ${hours} 小时 ${minutes} 分钟 ${seconds} 秒`;
+            } else {
+                document.getElementById("countdown").innerText = "春节快乐！";
+            }
+        }
+
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+    </script>
 </body>
 </html>
