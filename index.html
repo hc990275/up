@@ -33,12 +33,16 @@
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
             animation: fadeIn 2s ease-in-out;
         }
+        #year {
+            margin-bottom: 15px;
+            font-size: 1.2em;
+        }
         footer {
             margin-top: 20px;
-            font-size: 0.9em;
-            opacity: 0.8;
+            font-size: 1em;
+            opacity: 0.9;
+            line-height: 1.8;
         }
-
         @keyframes pulse {
             0%, 100% {
                 transform: scale(1);
@@ -63,7 +67,12 @@
     <h1>春节倒计时</h1>
     <div id="year"></div>
     <div id="countdown">正在计算...</div>
-    <footer>愿您度过一个幸福美满的春节！</footer>
+    <footer>
+        <p>愿您春节喜相逢，</p>
+        <p>家家户户乐融融。</p>
+        <p>花开富贵迎新岁，</p>
+        <p>万事如意享太平。</p>
+    </footer>
 
     <script>
         function getNextSpringFestivalDate() {
