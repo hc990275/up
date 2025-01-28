@@ -68,9 +68,9 @@
         function getNextSpringFestivalDate() {
             const currentYear = new Date().getFullYear();
             const springFestivalDates = {
-                2025: "2025-01-29",
-                2026: "2026-02-17",
-                2027: "2027-02-06"
+                2025: "2025-01-29T00:00:00",
+                2026: "2026-02-17T00:00:00",
+                2027: "2027-02-06T00:00:00"
             };
 
             let springFestivalDate = new Date(springFestivalDates[currentYear]);
@@ -86,13 +86,13 @@
         function updateCountdown() {
             const now = new Date();
             const springFestivalDate = getNextSpringFestivalDate();
-            const timeDifference = springFestivalDate - now;
+            const timeDifference = springFestivalDate.getTime() - now.getTime(); // 精确到毫秒
 
             if (timeDifference > 0) {
                 const days = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
                 const hours = Math.floor((timeDifference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                const minutes = Math.floor((timeDifference % (1000 * 60)) / (1000 * 60));
-                const seconds = Math.floor((timeDifference % (1000)) / 1000);
+                const minutes = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((timeDifference % (1000 * 60)) / 1000);
 
                 document.getElementById("countdown").innerText = 
                     `距离春节还有 ${days} 天 ${hours} 小时 ${minutes} 分钟 ${seconds} 秒`;
@@ -101,7 +101,10 @@
             }
         }
 
+        // 每秒更新一次倒计时
         setInterval(updateCountdown, 1000);
+
+        // 初次加载时更新倒计时
         updateCountdown();
     </script>
 </body>
