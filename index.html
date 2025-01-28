@@ -61,6 +61,7 @@
 </head>
 <body>
     <h1>春节倒计时</h1>
+    <div id="year"></div>
     <div id="countdown">正在计算...</div>
     <footer>愿您度过一个幸福美满的春节！</footer>
 
@@ -87,6 +88,10 @@
             const now = new Date();
             const springFestivalDate = getNextSpringFestivalDate();
             const timeDifference = springFestivalDate.getTime() - now.getTime(); // 精确到毫秒
+
+            // 获取年份提示
+            const year = springFestivalDate.getFullYear();
+            document.getElementById("year").innerText = `正在倒计时到 ${year} 年春节`;
 
             if (timeDifference > 0) {
                 const days = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
