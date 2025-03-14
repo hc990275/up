@@ -1,6 +1,7 @@
 {
 "urls": [
-{"url": "https://ghproxy.net/https://raw.githubusercontent.com/franksun1211/TVBOX/main/fuli.json","name": "1"},
-{"url": "https://huhujunxx.neocities.org/AV.json","name": "2"},
+{"url": "https://www.baidu.com","name": "jar加载失败没事"},
+{"url": "https://ghproxy.net/https://raw.githubusercontent.com/franksun1211/TVBOX/main/fuli.json","name": "线路1"},
+{"url": "https://huhujunxx.neocities.org/AV.json","name": "线路2"}
 ]
 }
