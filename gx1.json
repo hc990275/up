@@ -3,10 +3,10 @@
     "sites": [
         {
             "key": "Market",
-            "name": "APP",
+            "name": "應用商店-代理链",
             "type": 3,
             "api": "csp_Market",
-            "ext": "https://www.2080.work/gx2.json"
+            "ext": "https://2080.work/gx2.json"
         } 
     ]
 }

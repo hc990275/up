@@ -1,45 +1,45 @@
 [
     {
-        "name": "Õ∆À]",
+        "name": "Êé®Ëñ¶",
         "list": [
             {
-                "name": " ÷ôC-32",
+                "name": "ÊâãÊ©ü-32",
                 "url": "https://mirror.ghproxy.com/https://raw.githubusercontent.com/lystv/fmapp/c769e3020fb2b24c1b5b146fd8b1ac7434697ff3/apk/release/mobile-armeabi_v7a.apk",
                 "icon": "https://mirror.ghproxy.com/https://raw.githubusercontent.com/lystv/fmapp/img/log/okys.jpg",
                 "version": "OK-2.9.2"
             },
             {
-                "name": "Îä“ï-32",
+                "name": "ÈõªË¶ñ-32",
                 "url": "https://mirror.ghproxy.com/https://raw.githubusercontent.com/lystv/fmapp/c769e3020fb2b24c1b5b146fd8b1ac7434697ff3/apk/release/leanback-armeabi_v7a.apk",
                 "icon": "https://mirror.ghproxy.com/https://raw.githubusercontent.com/lystv/fmapp/img/log/okys.jpg",
                 "version": "OK-2.9.2"
             },
             {
-                "name": "4.xÎä“ï",
+                "name": "4.xÈõªË¶ñ",
                 "url": "https://mirror.ghproxy.com/https://raw.githubusercontent.com/lystv/fmapp/93fd99c68e7bddc4b903a2fe12fdbd372630610b/apk/kitkat/leanback.apk",
                 "icon": "https://mirror.ghproxy.com/https://raw.githubusercontent.com/lystv/fmapp/img/log/okys.jpg",
                 "version": "OK-2.5.0"
             },
             {
-                "name": " ÷ôCpro",
+                "name": "ÊâãÊ©üpro",
                 "url": "https://mirror.ghproxy.com/https://raw.githubusercontent.com/lystv/fmapp/b76da7e5ee1ffc653b57c11809405f4c5bb760f9/apk/pro/mobile-pro.apk",
                 "icon": "https://mirror.ghproxy.com/https://raw.githubusercontent.com/lystv/fmapp/img/log/okys.jpg",
                 "version": "OK-3.3.2-pro"
             },
             {
-                "name": "Îä“ïpro",
+                "name": "ÈõªË¶ñpro",
                 "url": "https://mirror.ghproxy.com/https://raw.githubusercontent.com/lystv/fmapp/b76da7e5ee1ffc653b57c11809405f4c5bb760f9/apk/pro/leanback-pro.apk",
                 "icon": "https://mirror.ghproxy.com/https://raw.githubusercontent.com/lystv/fmapp/img/log/okys.jpg",
                 "version": "OK-3.3.2-pro"
             },
             {
-                "name": " ÷ôC-32",
+                "name": "ÊâãÊ©ü-32",
                 "url": "https://mirror.ghproxy.com/https://raw.githubusercontent.com/lystv/fmapp/c8534963038d1ad747d087818c1560cebece8b48/apk/release/mobile-armeabi_v7a.apk",
                 "icon": "https://mirror.ghproxy.com/https://raw.githubusercontent.com/lystv/fmapp/img/log/ys.jpg",
                 "version": "FM-3.8.7"
             },
             {
-                "name": "Îä“ï-32",
+                "name": "ÈõªË¶ñ-32",
                 "url": "https://mirror.ghproxy.com/https://raw.githubusercontent.com/lystv/fmapp/c8534963038d1ad747d087818c1560cebece8b48/apk/release/leanback-armeabi_v7a.apk",
                 "icon": "https://mirror.ghproxy.com/https://raw.githubusercontent.com/lystv/fmapp/img/log/ys.jpg",
                 "version": "FM-3.8.7"
@@ -47,82 +47,82 @@
         ]
     },
     {
-        "name": "’˝ Ω∞Ê",
+        "name": "Ê≠£ÂºèÁâà",
         "list": [
             {
-                "name": "Îä“ï-32",
+                "name": "ÈõªË¶ñ-32",
                 "url": "https://mirror.ghproxy.com/https://raw.githubusercontent.com/lystv/fmapp/c769e3020fb2b24c1b5b146fd8b1ac7434697ff3/apk/release/leanback-armeabi_v7a.apk",
                 "icon": "https://mirror.ghproxy.com/https://raw.githubusercontent.com/lystv/fmapp/img/log/okys.jpg",
                 "version": "OK-2.9.2"
             },
             {
-                "name": "Îä“ï-64",
+                "name": "ÈõªË¶ñ-64",
                 "url": "https://mirror.ghproxy.com/https://raw.githubusercontent.com/lystv/fmapp/c769e3020fb2b24c1b5b146fd8b1ac7434697ff3/apk/release/leanback-arm64_v8a.apk",
                 "icon": "https://mirror.ghproxy.com/https://raw.githubusercontent.com/lystv/fmapp/img/log/okys.jpg",
                 "version": "OK-2.9.2"
             },
             {
-                "name": "∫£–≈Îä“ï◊®∞Ê",
-                "url": "https://mirror.ghproxy.com/https://raw.githubusercontent.com/lystv/fmapp/c769e3020fb2b24c1b5b146fd8b1ac7434697ff3/apk/dev/∫£–≈◊®∞Ê.apk",
+                "name": "Êµ∑‰ø°ÈõªË¶ñ‰∏ìÁâà",
+                "url": "https://mirror.ghproxy.com/https://raw.githubusercontent.com/lystv/fmapp/c769e3020fb2b24c1b5b146fd8b1ac7434697ff3/apk/dev/Êµ∑‰ø°‰∏ìÁâà.apk",
                 "icon": "https://mirror.ghproxy.com/https://raw.githubusercontent.com/lystv/fmapp/img/log/okys.jpg",
                 "version": "OK-2.9.2"
             },
             {
-                "name": "Îä“ïx5¿Îœﬂ∞Ê",
-                "url": "https://mirror.ghproxy.com/https://raw.githubusercontent.com/lystv/fmapp/c769e3020fb2b24c1b5b146fd8b1ac7434697ff3/apk/dev/µÁ ”∞Ê-X5¿Îœﬂ.apk",
+                "name": "ÈõªË¶ñx5Á¶ªÁ∫øÁâà",
+                "url": "https://mirror.ghproxy.com/https://raw.githubusercontent.com/lystv/fmapp/c769e3020fb2b24c1b5b146fd8b1ac7434697ff3/apk/dev/ÁîµËßÜÁâà-X5Á¶ªÁ∫ø.apk",
                 "icon": "https://mirror.ghproxy.com/https://raw.githubusercontent.com/lystv/fmapp/img/log/okys.jpg",
                 "version": "OK-2.9.2"
             },
             {
-                "name": " ÷ôC-32",
+                "name": "ÊâãÊ©ü-32",
                 "url": "https://mirror.ghproxy.com/https://raw.githubusercontent.com/lystv/fmapp/c769e3020fb2b24c1b5b146fd8b1ac7434697ff3/apk/release/mobile-armeabi_v7a.apk",
                 "icon": "https://mirror.ghproxy.com/https://raw.githubusercontent.com/lystv/fmapp/img/log/okys.jpg",
                 "version": "OK-2.9.2"
             },
             {
-                "name": " ÷ôC-64",
+                "name": "ÊâãÊ©ü-64",
                 "url": "https://mirror.ghproxy.com/https://raw.githubusercontent.com/lystv/fmapp/c769e3020fb2b24c1b5b146fd8b1ac7434697ff3/apk/release/mobile-arm64_v8a.apk",
                 "icon": "https://mirror.ghproxy.com/https://raw.githubusercontent.com/lystv/fmapp/img/log/okys.jpg",
                 "version": "OK-2.9.2"
             },
             {
-                "name": " ÷ôCpro",
+                "name": "ÊâãÊ©üpro",
                 "url": "https://mirror.ghproxy.com/https://raw.githubusercontent.com/lystv/fmapp/b76da7e5ee1ffc653b57c11809405f4c5bb760f9/apk/pro/mobile-pro.apk",
                 "icon": "https://mirror.ghproxy.com/https://raw.githubusercontent.com/lystv/fmapp/img/log/okys.jpg",
                 "version": "OK-3.3.2-pro"
             },
             {
-                "name": " ÷ôCpro-emu",
+                "name": "ÊâãÊ©üpro-emu",
                 "url": "https://mirror.ghproxy.com/https://raw.githubusercontent.com/lystv/fmapp/b76da7e5ee1ffc653b57c11809405f4c5bb760f9/apk/pro/mobile-emu-pro.apk",
                 "icon": "https://mirror.ghproxy.com/https://raw.githubusercontent.com/lystv/fmapp/img/log/okys.jpg",
                 "version": "OK-3.3.2-pro"
             },
             {
-                "name": "Îä“ïpro",
+                "name": "ÈõªË¶ñpro",
                 "url": "https://mirror.ghproxy.com/https://raw.githubusercontent.com/lystv/fmapp/b76da7e5ee1ffc653b57c11809405f4c5bb760f9/apk/pro/leanback-pro.apk",
                 "icon": "https://mirror.ghproxy.com/https://raw.githubusercontent.com/lystv/fmapp/img/log/okys.jpg",
                 "version": "OK-3.3.2-pro"
             },
             {
-                "name": "Îä“ï-32",
+                "name": "ÈõªË¶ñ-32",
                 "url": "https://mirror.ghproxy.com/https://raw.githubusercontent.com/lystv/fmapp/c8534963038d1ad747d087818c1560cebece8b48/apk/release/leanback-armeabi_v7a.apk",
                 "icon": "https://mirror.ghproxy.com/https://raw.githubusercontent.com/lystv/fmapp/img/log/ys.jpg",
                 "version": "FM-3.8.7"
             },
             {
-                "name": "Îä“ï-64",
+                "name": "ÈõªË¶ñ-64",
                 "url": "https://mirror.ghproxy.com/https://raw.githubusercontent.com/lystv/fmapp/c8534963038d1ad747d087818c1560cebece8b48/apk/release/leanback-arm64_v8a.apk",
                 "icon": "https://mirror.ghproxy.com/https://raw.githubusercontent.com/lystv/fmapp/img/log/ys.jpg",
                 "version": "FM-3.8.7"
             }, 
             {
-                "name": " ÷ôC-32",
+                "name": "ÊâãÊ©ü-32",
                 "url": "https://mirror.ghproxy.com/https://raw.githubusercontent.com/lystv/fmapp/c8534963038d1ad747d087818c1560cebece8b48/apk/release/mobile-armeabi_v7a.apk",
                 "icon": "https://mirror.ghproxy.com/https://raw.githubusercontent.com/lystv/fmapp/img/log/ys.jpg",
                 "version": "FM-3.8.7"
             },
             {
-                "name": " ÷ôC-64",
+                "name": "ÊâãÊ©ü-64",
                 "url": "https://mirror.ghproxy.com/https://raw.githubusercontent.com/lystv/fmapp/c8534963038d1ad747d087818c1560cebece8b48/apk/release/mobile-arm64_v8a.apk",
                 "icon": "https://mirror.ghproxy.com/https://raw.githubusercontent.com/lystv/fmapp/img/log/ys.jpg",
                 "version": "FM-3.8.7"
@@ -130,64 +130,64 @@
         ]
     },
     {
-        "name": "É»úy∞Ê",
+        "name": "ÂÖßÊ∏¨Áâà",
         "list": [ 
             {
-                "name": "Îä“ï-32",
+                "name": "ÈõªË¶ñ-32",
                 "url": "https://mirror.ghproxy.com/https://raw.githubusercontent.com/lystv/fmapp/46fe8f89934de86af3f4a76723f63ee3cbd4254e/apk/dev/leanback-armeabi_v7a.apk",
                 "icon": "https://mirror.ghproxy.com/https://raw.githubusercontent.com/lystv/fmapp/img/log/okys.jpg",
                 "version": "OK-2.8.5"
             },
             {
-                "name": "Îä“ï-64",
+                "name": "ÈõªË¶ñ-64",
                 "url": "https://mirror.ghproxy.com/https://raw.githubusercontent.com/lystv/fmapp/46fe8f89934de86af3f4a76723f63ee3cbd4254e/apk/dev/leanback-arm64_v8a.apk",
                 "icon": "https://mirror.ghproxy.com/https://raw.githubusercontent.com/lystv/fmapp/img/log/okys.jpg",
                 "version": "OK-2.8.5"
             },
             {
-                "name": "∫£–≈Îä“ï◊®∞Ê",
-                "url": "https://mirror.ghproxy.com/https://raw.githubusercontent.com/lystv/fmapp/46fe8f89934de86af3f4a76723f63ee3cbd4254e/apk/dev/∫£–≈◊®∞Ê.apk",
+                "name": "Êµ∑‰ø°ÈõªË¶ñ‰∏ìÁâà",
+                "url": "https://mirror.ghproxy.com/https://raw.githubusercontent.com/lystv/fmapp/46fe8f89934de86af3f4a76723f63ee3cbd4254e/apk/dev/Êµ∑‰ø°‰∏ìÁâà.apk",
                 "icon": "https://mirror.ghproxy.com/https://raw.githubusercontent.com/lystv/fmapp/img/log/okys.jpg",
                 "version": "OK-2.8.5"
             },
             {
-                "name": "Îä“ïx5¿Îœﬂ∞Ê",
-                "url": "https://mirror.ghproxy.com/https://raw.githubusercontent.com/lystv/fmapp/46fe8f89934de86af3f4a76723f63ee3cbd4254e/apk/dev/µÁ ”∞Ê-X5¿Îœﬂ.apk",
+                "name": "ÈõªË¶ñx5Á¶ªÁ∫øÁâà",
+                "url": "https://mirror.ghproxy.com/https://raw.githubusercontent.com/lystv/fmapp/46fe8f89934de86af3f4a76723f63ee3cbd4254e/apk/dev/ÁîµËßÜÁâà-X5Á¶ªÁ∫ø.apk",
                 "icon": "https://mirror.ghproxy.com/https://raw.githubusercontent.com/lystv/fmapp/img/log/okys.jpg",
                 "version": "OK-2.8.5"
             },
             {
-                "name": " ÷ôC-32",
+                "name": "ÊâãÊ©ü-32",
                 "url": "https://mirror.ghproxy.com/https://raw.githubusercontent.com/lystv/fmapp/46fe8f89934de86af3f4a76723f63ee3cbd4254e/apk/dev/mobile-armeabi_v7a.apk",
                 "icon": "https://mirror.ghproxy.com/https://raw.githubusercontent.com/lystv/fmapp/img/log/okys.jpg",
                 "version": "OK-2.8.5"
             },
             {
-                "name": " ÷ôC-64",
+                "name": "ÊâãÊ©ü-64",
                 "url": "https://mirror.ghproxy.com/https://raw.githubusercontent.com/lystv/fmapp/46fe8f89934de86af3f4a76723f63ee3cbd4254e/apk/dev/mobile-arm64_v8a.apk",
                 "icon": "https://mirror.ghproxy.com/https://raw.githubusercontent.com/lystv/fmapp/img/log/okys.jpg",
                 "version": "OK-2.8.5"
             }, 
             {
-                "name": "Îä“ï-32",
+                "name": "ÈõªË¶ñ-32",
                 "url": "https://mirror.ghproxy.com/https://raw.githubusercontent.com/lystv/fmapp//apk/dev/leanback-armeabi_v7a.apk",
                 "icon": "https://mirror.ghproxy.com/https://raw.githubusercontent.com/lystv/fmapp/img/log/ys.jpg",
                 "version": "FM-0"
             },
             {
-                "name": "Îä“ï-64",
+                "name": "ÈõªË¶ñ-64",
                 "url": "https://mirror.ghproxy.com/https://raw.githubusercontent.com/lystv/fmapp//apk/dev/leanback-arm64_v8a.apk",
                 "icon": "https://mirror.ghproxy.com/https://raw.githubusercontent.com/lystv/fmapp/img/log/ys.jpg",
                 "version": "FM-0"
             }, 
             {
-                "name": " ÷ôC-32",
+                "name": "ÊâãÊ©ü-32",
                 "url": "https://mirror.ghproxy.com/https://raw.githubusercontent.com/lystv/fmapp//apk/dev/mobile-armeabi_v7a.apk",
                 "icon": "https://mirror.ghproxy.com/https://raw.githubusercontent.com/lystv/fmapp/img/log/ys.jpg",
                 "version": "FM-0"
             },
             {
-                "name": " ÷ôC-64",
+                "name": "ÊâãÊ©ü-64",
                 "url": "https://mirror.ghproxy.com/https://raw.githubusercontent.com/lystv/fmapp//apk/dev/mobile-arm64_v8a.apk",
                 "icon": "https://mirror.ghproxy.com/https://raw.githubusercontent.com/lystv/fmapp/img/log/ys.jpg",
                 "version": "FM-0"
@@ -195,10 +195,10 @@
         ]
     },
     {
-        "name": "4.x∞Ê",
+        "name": "4.xÁâà",
         "list": [
             {
-                "name": "Îä“ï",
+                "name": "ÈõªË¶ñ",
                 "url": "https://mirror.ghproxy.com/https://raw.githubusercontent.com/lystv/fmapp/93fd99c68e7bddc4b903a2fe12fdbd372630610b/apk/kitkat/leanback.apk",
                 "icon": "https://mirror.ghproxy.com/https://raw.githubusercontent.com/lystv/fmapp/img/log/okys.jpg",
                 "version": "OK-2.5.0"
@@ -206,7 +206,7 @@
         ]
     },
     {
-        "name": "∑ —Ú",
+        "name": "ËÇ•Áæä",
         "list": [
             {
                 "name": "Allinone v7-32",
@@ -223,3 +223,4 @@
         ]
     }
 ]
+
