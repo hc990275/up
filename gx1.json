@@ -1,0 +1,12 @@
+{
+    "spider": "https://mirror.ghproxy.com/https://raw.githubusercontent.com/FongMi/CatVodSpider/main/jar/custom_spider.jar",
+    "sites": [
+        {
+            "key": "Market",
+            "name": "應用商店-代理链",
+            "type": 3,
+            "api": "csp_Market",
+            "ext": "https://www.2080.work/gx2.json"
+        } 
+    ]
+}
