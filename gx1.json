@@ -8,5 +8,12 @@
             "api": "csp_Market",
             "ext": "https://2080.work/gx2.json"
         } 
+        {
+            "key": "Market",
+            "name": "應用商店-直链",
+            "type": 3,
+            "api": "csp_Market",
+            "ext": "https://raw.githubusercontent.com/lystv/fmapp/app/yysd-zl.json"
+        }
     ]
 }
