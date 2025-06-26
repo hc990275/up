@@ -14,9 +14,9 @@
             max-width: 100%;
             font-size: 16px;
             background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-            min-height: 100vh;
+            min-height: 10vh;
         }
-        
+
         .container {
             background: white;
             border-radius: 15px;
@@ -25,7 +25,7 @@
             margin: 20px auto;
             max-width: 800px;
         }
-        
+
         h1 {
             font-size: 28px;
             color: #2c3e50;
@@ -34,23 +34,23 @@
             font-weight: 600;
             text-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
-        
+
         h2 {
             font-size: 20px;
             color: #34495e;
             margin: 20px 0 15px;
             font-weight: 500;
         }
-        
+
         ul {
             padding-left: 20px;
             margin: 15px 0;
         }
-        
+
         li {
             margin-bottom: 10px;
         }
-        
+
         .section {
             display: none;
             margin-bottom: 25px;
@@ -59,22 +59,22 @@
             border-radius: 12px;
             border-left: 4px solid #3498db;
         }
-        
+
         .section.active {
             display: block;
             animation: fadeIn 0.3s ease-in;
         }
-        
+
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(10px); }
             to { opacity: 1; transform: translateY(0); }
         }
-        
+
         .selector {
             text-align: center;
             margin-bottom: 30px;
         }
-        
+
         button {
             padding: 15px 30px;
             margin: 8px;
@@ -90,7 +90,7 @@
             position: relative;
             overflow: hidden;
         }
-        
+
         button::before {
             content: '';
             position: absolute;
@@ -101,26 +101,26 @@
             background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
             transition: left 0.5s;
         }
-        
+
         button:hover::before {
             left: 100%;
         }
-        
+
         button:hover {
             transform: translateY(-2px);
             box-shadow: 0 8px 25px rgba(0,0,0,0.15);
         }
-        
+
         button.active {
             background: linear-gradient(145deg, #3498db, #2980b9);
             color: white;
             box-shadow: 0 6px 20px rgba(52, 152, 219, 0.4);
         }
-        
+
         button.active:hover {
             background: linear-gradient(145deg, #2980b9, #21618c);
         }
-        
+
         .contact {
             text-align: center;
             margin-top: 30px;
@@ -132,45 +132,45 @@
             border-radius: 12px;
             box-shadow: 0 4px 15px rgba(0,0,0,0.1);
         }
-        
+
         strong {
             color: #2c3e50;
         }
-        
+
         .section strong {
             color: #3498db;
         }
-        
+
         @media (max-width: 600px) {
             body {
                 font-size: 14px;
                 margin: 10px;
             }
-            
+
             .container {
                 padding: 20px;
                 margin: 10px;
             }
-            
+
             h1 {
                 font-size: 24px;
             }
-            
+
             h2 {
                 font-size: 18px;
             }
-            
+
             button {
                 font-size: 14px;
                 padding: 12px 24px;
                 margin: 5px;
             }
-            
+
             .contact {
                 font-size: 16px;
                 padding: 15px;
             }
-            
+
             .section {
                 padding: 20px;
             }
@@ -183,6 +183,8 @@
         <div class="selector">
             <button onclick="showSection('xiaokouzi')" class="active">小口子军港</button>
             <button onclick="showSection('lianyungang')">连云港填海</button>
+            <button onclick="showSection('xuweinuclear')">连云港中核徐圩核电站</button>
+            <button onclick="showSection('henangold')">河南金矿工程</button>
         </div>
 
         <div id="xiaokouzi" class="section active">
@@ -229,8 +231,32 @@
             </ul>
         </div>
 
+        <div id="xuweinuclear" class="section">
+            <h2>连云港中核徐圩核电站土方运输</h2>
+            <ul>
+                <li><strong>车辆要求</strong>：
+                    <ul>
+                        <li>规格：8.2m 至 8.6m 箱高 1.8m-2m</li>
+                        <li>净重：≤ 80 吨</li>
+                    </ul>
+                </li>
+                <li><strong>运输价格</strong>：
+                    <ul>
+                        <li>价格：12.5元/吨（45公里±3）</li>
+                        <li>结算：日结</li>
+                        <li>作业：24 小时</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+
         <div class="contact">
             <strong>联系方式</strong>：郭 13705366364（微信同号）
+        </div>
+
+        <div id="henangold" class="section">
+            <h2>河南金矿工程（正在谈）</h2>
+            <p>具体信息正在洽谈中，敬请期待。</p>
         </div>
     </div>
 
@@ -248,3 +274,4 @@
     </script>
 </body>
 </html>
+
