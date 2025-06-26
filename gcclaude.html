@@ -5,274 +5,698 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>工程运输公示</title>
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
-            margin: 15px;
-            padding: 0;
             line-height: 1.6;
             color: #333;
-            max-width: 100%;
-            font-size: 16px;
-            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-            min-height: 10vh;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            overflow-x: hidden;
         }
 
-        .container {
-            background: white;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            padding: 30px;
-            margin: 20px auto;
-            max-width: 800px;
-        }
-
-        h1 {
-            font-size: 28px;
-            color: #2c3e50;
-            text-align: center;
-            margin-bottom: 30px;
-            font-weight: 600;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
-
-        h2 {
-            font-size: 20px;
-            color: #34495e;
-            margin: 20px 0 15px;
-            font-weight: 500;
-        }
-
-        ul {
-            padding-left: 20px;
-            margin: 15px 0;
-        }
-
-        li {
-            margin-bottom: 10px;
-        }
-
-        .section {
-            display: none;
-            margin-bottom: 25px;
-            background: #f8f9fc;
-            padding: 25px;
-            border-radius: 12px;
-            border-left: 4px solid #3498db;
-        }
-
-        .section.active {
-            display: block;
-            animation: fadeIn 0.3s ease-in;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .selector {
-            text-align: center;
-            margin-bottom: 30px;
-        }
-
-        button {
-            padding: 15px 30px;
-            margin: 8px;
-            font-size: 16px;
-            font-weight: 500;
-            border: none;
-            border-radius: 25px;
-            background: linear-gradient(145deg, #ffffff, #e6e6e6);
-            color: #2c3e50;
-            cursor: pointer;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-            position: relative;
-            overflow: hidden;
-        }
-
-        button::before {
-            content: '';
-            position: absolute;
+        .header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 20px 0;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+            position: sticky;
             top: 0;
-            left: -100%;
+            z-index: 100;
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: #2c3e50;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo::before {
+            content: "🚛";
+            font-size: 28px;
+        }
+
+        .date-badge {
+            background: linear-gradient(135deg, #ff6b6b, #ee5a24);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 25px;
+            font-weight: 600;
+            font-size: 16px;
+            box-shadow: 0 4px 15px rgba(238, 90, 36, 0.3);
+        }
+
+        .menu-toggle {
+            background: linear-gradient(135deg, #4834d4, #686de0);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 25px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(72, 52, 212, 0.3);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .menu-toggle:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(72, 52, 212, 0.4);
+        }
+
+        .menu-toggle::after {
+            content: "☰";
+            font-size: 18px;
+        }
+
+        .drawer-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
-            transition: left 0.5s;
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(5px);
+            z-index: 200;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
         }
 
-        button:hover::before {
-            left: 100%;
+        .drawer-overlay.active {
+            opacity: 1;
+            visibility: visible;
         }
 
-        button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        .drawer {
+            position: fixed;
+            top: 0;
+            right: -400px;
+            width: 350px;
+            height: 100%;
+            background: white;
+            box-shadow: -5px 0 25px rgba(0,0,0,0.2);
+            transition: right 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: 300;
+            overflow-y: auto;
         }
 
-        button.active {
-            background: linear-gradient(145deg, #3498db, #2980b9);
-            color: white;
-            box-shadow: 0 6px 20px rgba(52, 152, 219, 0.4);
+        .drawer.active {
+            right: 0;
         }
 
-        button.active:hover {
-            background: linear-gradient(145deg, #2980b9, #21618c);
-        }
-
-        .contact {
-            text-align: center;
-            margin-top: 30px;
-            padding: 20px;
-            font-size: 18px;
-            color: #2c3e50;
+        .drawer-header {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
-            border-radius: 12px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            padding: 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
 
-        strong {
+        .drawer-title {
+            font-size: 20px;
+            font-weight: 600;
+        }
+
+        .close-btn {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+            padding: 5px;
+            border-radius: 50%;
+            transition: background 0.3s ease;
+        }
+
+        .close-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .drawer-content {
+            padding: 20px;
+        }
+
+        .project-item {
+            background: linear-gradient(135deg, #f8f9fc 0%, #e6e9f0 100%);
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 15px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border-left: 4px solid transparent;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .project-item:hover {
+            transform: translateX(5px);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            border-left-color: #667eea;
+        }
+
+        .project-item.active {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-left-color: #ffd700;
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
+        }
+
+        .project-name {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .project-desc {
+            font-size: 14px;
+            opacity: 0.8;
+        }
+
+        .main-content {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .project-display {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            overflow: hidden;
+            min-height: 500px;
+        }
+
+        .project-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .project-title {
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 10px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .project-subtitle {
+            font-size: 16px;
+            opacity: 0.9;
+        }
+
+        .project-details {
+            padding: 40px;
+        }
+
+        .detail-section {
+            margin-bottom: 30px;
+            padding: 25px;
+            background: linear-gradient(135deg, #f8f9fc 0%, #e6e9f0 100%);
+            border-radius: 15px;
+            border-left: 5px solid #667eea;
+        }
+
+        .detail-title {
+            font-size: 20px;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .detail-title::before {
+            content: "📋";
+            font-size: 18px;
+        }
+
+        .detail-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .detail-item {
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(0,0,0,0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .detail-item:last-child {
+            border-bottom: none;
+        }
+
+        .detail-label {
+            font-weight: 600;
             color: #2c3e50;
         }
 
-        .section strong {
-            color: #3498db;
+        .detail-value {
+            color: #667eea;
+            font-weight: 600;
         }
 
-        @media (max-width: 600px) {
-            body {
+        .contact-section {
+            background: linear-gradient(135deg, #ff6b6b, #ee5a24);
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            margin-top: 30px;
+            box-shadow: 0 8px 25px rgba(238, 90, 36, 0.3);
+        }
+
+        .contact-title {
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .contact-info {
+            font-size: 20px;
+            font-weight: 700;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .welcome-message {
+            text-align: center;
+            padding: 80px 40px;
+            color: #666;
+        }
+
+        .welcome-icon {
+            font-size: 80px;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .welcome-title {
+            font-size: 28px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: #2c3e50;
+        }
+
+        .welcome-desc {
+            font-size: 16px;
+            opacity: 0.8;
+        }
+
+        @media (max-width: 768px) {
+            .header-content {
+                padding: 0 15px;
+            }
+
+            .logo {
+                font-size: 20px;
+            }
+
+            .date-badge {
                 font-size: 14px;
-                margin: 10px;
+                padding: 8px 16px;
             }
 
-            .container {
-                padding: 20px;
-                margin: 10px;
+            .drawer {
+                width: 300px;
+                right: -300px;
             }
 
-            h1 {
+            .main-content {
+                padding: 0 15px;
+                margin: 20px auto;
+            }
+
+            .project-title {
                 font-size: 24px;
             }
 
-            h2 {
-                font-size: 18px;
+            .project-details {
+                padding: 25px;
             }
 
-            button {
-                font-size: 14px;
-                padding: 12px 24px;
-                margin: 5px;
-            }
-
-            .contact {
-                font-size: 16px;
-                padding: 15px;
-            }
-
-            .section {
+            .detail-section {
                 padding: 20px;
             }
+
+            .contact-section {
+                padding: 25px;
+            }
+
+            .welcome-message {
+                padding: 60px 20px;
+            }
+
+            .welcome-icon {
+                font-size: 60px;
+            }
+
+            .welcome-title {
+                font-size: 24px;
+            }
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .project-display.active {
+            animation: slideIn 0.5s ease;
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>6月26日</h1>
-        <div class="selector">
-            <button onclick="showSection('xiaokouzi')" class="active">小口子军港</button>
-            <button onclick="showSection('lianyungang')">连云港填海</button>
-            <button onclick="showSection('xuweinuclear')">连云港中核徐圩核电站</button>
-            <button onclick="showSection('henangold')">河南金矿工程</button>
+    <header class="header">
+        <div class="header-content">
+            <div class="logo">工程运输公示</div>
+            <div class="date-badge">6月26日</div>
+            <button class="menu-toggle" onclick="toggleDrawer()">选择工程</button>
         </div>
+    </header>
 
-        <div id="xiaokouzi" class="section active">
-            <h2>小口子军港工程</h2>
-            <ul>
-                <li><strong>车辆要求</strong>：
-                    <ul>
-                        <li>规格：8.2m 至 8.6m 箱高 1.8m</li>
-                        <li>净重：≥ 60 吨</li>
-                    </ul>
-                </li>
-                <li><strong>运输价格</strong>：
-                    <ul>
-                        <li>距离：65 公里</li>
-                        <li>价格：1300 元/趟</li>
-                        <li>结算：日结</li>
-                        <li>作业：24 小时</li>
-                        <li>其他：甲方负责食宿及路保</li>
-                    </ul>
-                </li>
-            </ul>
+    <div class="drawer-overlay" onclick="closeDrawer()"></div>
+    
+    <div class="drawer">
+        <div class="drawer-header">
+            <div class="drawer-title">选择工程项目</div>
+            <button class="close-btn" onclick="closeDrawer()">×</button>
         </div>
-
-        <div id="lianyungang" class="section">
-            <h2>连云港填海工程</h2>
-            <ul>
-                <li><strong>项目概述</strong>：运输碎石</li>
-                <li><strong>车辆要求</strong>：
-                    <ul>
-                        <li>规格：8.2m 至 8.6m 箱高 1.8m</li>
-                        <li>净重：≥ 60 吨</li>
-                        <li>颜色要求：绿色</li>
-                    </ul>
-                </li>
-                <li><strong>运输价格</strong>：
-                    <ul>
-                        <li>距离：70 公里 ± 2 公里</li>
-                        <li>价格：15 元/吨</li>
-                        <li>结算：日结</li>
-                        <li>其他：甲方负责食宿、油费及路保</li>
-                    </ul>
-                </li>
-                <li><strong>备注</strong>：从速报备，具体以合同为准</li>
-            </ul>
-        </div>
-
-        <div id="xuweinuclear" class="section">
-            <h2>连云港中核徐圩核电站土方运输</h2>
-            <ul>
-                <li><strong>项目概述</strong>：运输土方</li>
-                <li><strong>车辆要求</strong>：
-                    <ul>
-                        <li>规格：8.2m 至 8.6m 箱高 1.8m-2m</li>
-                        <li>净重：≤ 80 吨</li>
-                    </ul>
-                </li>
-                <li><strong>运输价格</strong>：
-                    <ul>
-                        <li>价格：12.5元/吨（45公里±3）</li>
-                        <li>结算：日结</li>
-                        <li>作业：24 小时</li>
-                    </ul>
-                </li>
-            </ul>
-        </div>
-
-        <div class="contact">
-            <strong>联系方式</strong>：郭 13705366364（微信同号）
-        </div>
-
-        <div id="henangold" class="section">
-            <h2>河南金矿工程（正在谈）</h2>
-            <p>具体信息正在洽谈中，敬请期待。</p>
+        <div class="drawer-content">
+            <div class="project-item active" onclick="selectProject('xiaokouzi', this)">
+                <div class="project-name">小口子军港工程</div>
+                <div class="project-desc">65公里 • 1300元/趟 • 日结</div>
+            </div>
+            <div class="project-item" onclick="selectProject('lianyungang', this)">
+                <div class="project-name">连云港填海工程</div>
+                <div class="project-desc">运输碎石 • 70公里 • 15元/吨</div>
+            </div>
+            <div class="project-item" onclick="selectProject('xuweinuclear', this)">
+                <div class="project-name">连云港中核徐圩核电站</div>
+                <div class="project-desc">土方运输 • 45公里 • 12.5元/吨</div>
+            </div>
+            <div class="project-item" onclick="selectProject('henangold', this)">
+                <div class="project-name">河南金矿工程</div>
+                <div class="project-desc">正在洽谈中 • 敬请期待</div>
+            </div>
         </div>
     </div>
 
+    <main class="main-content">
+        <div class="project-display active" id="content">
+            <div id="xiaokouzi" class="project-content active">
+                <div class="project-header">
+                    <div class="project-title">小口子军港工程</div>
+                    <div class="project-subtitle">专业军港建设运输服务</div>
+                </div>
+                <div class="project-details">
+                    <div class="detail-section">
+                        <div class="detail-title">车辆要求</div>
+                        <ul class="detail-list">
+                            <li class="detail-item">
+                                <span class="detail-label">车辆规格</span>
+                                <span class="detail-value">8.2m - 8.6m</span>
+                            </li>
+                            <li class="detail-item">
+                                <span class="detail-label">箱高要求</span>
+                                <span class="detail-value">1.8m</span>
+                            </li>
+                            <li class="detail-item">
+                                <span class="detail-label">净重要求</span>
+                                <span class="detail-value">≥ 60吨</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="detail-section">
+                        <div class="detail-title">运输详情</div>
+                        <ul class="detail-list">
+                            <li class="detail-item">
+                                <span class="detail-label">运输距离</span>
+                                <span class="detail-value">65公里</span>
+                            </li>
+                            <li class="detail-item">
+                                <span class="detail-label">运输价格</span>
+                                <span class="detail-value">1300元/趟</span>
+                            </li>
+                            <li class="detail-item">
+                                <span class="detail-label">结算方式</span>
+                                <span class="detail-value">日结</span>
+                            </li>
+                            <li class="detail-item">
+                                <span class="detail-label">作业时间</span>
+                                <span class="detail-value">24小时</span>
+                            </li>
+                            <li class="detail-item">
+                                <span class="detail-label">其他待遇</span>
+                                <span class="detail-value">甲方负责食宿及路保</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div id="lianyungang" class="project-content">
+                <div class="project-header">
+                    <div class="project-title">连云港填海工程</div>
+                    <div class="project-subtitle">碎石运输 • 海洋工程建设</div>
+                </div>
+                <div class="project-details">
+                    <div class="detail-section">
+                        <div class="detail-title">项目概述</div>
+                        <ul class="detail-list">
+                            <li class="detail-item">
+                                <span class="detail-label">运输物料</span>
+                                <span class="detail-value">碎石</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="detail-section">
+                        <div class="detail-title">车辆要求</div>
+                        <ul class="detail-list">
+                            <li class="detail-item">
+                                <span class="detail-label">车辆规格</span>
+                                <span class="detail-value">8.2m - 8.6m</span>
+                            </li>
+                            <li class="detail-item">
+                                <span class="detail-label">箱高要求</span>
+                                <span class="detail-value">1.8m</span>
+                            </li>
+                            <li class="detail-item">
+                                <span class="detail-label">净重要求</span>
+                                <span class="detail-value">≥ 60吨</span>
+                            </li>
+                            <li class="detail-item">
+                                <span class="detail-label">颜色要求</span>
+                                <span class="detail-value">绿色</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="detail-section">
+                        <div class="detail-title">运输详情</div>
+                        <ul class="detail-list">
+                            <li class="detail-item">
+                                <span class="detail-label">运输距离</span>
+                                <span class="detail-value">70公里 ± 2公里</span>
+                            </li>
+                            <li class="detail-item">
+                                <span class="detail-label">运输价格</span>
+                                <span class="detail-value">15元/吨</span>
+                            </li>
+                            <li class="detail-item">
+                                <span class="detail-label">结算方式</span>
+                                <span class="detail-value">日结</span>
+                            </li>
+                            <li class="detail-item">
+                                <span class="detail-label">其他待遇</span>
+                                <span class="detail-value">甲方负责食宿、油费及路保</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="detail-section">
+                        <div class="detail-title">重要提醒</div>
+                        <ul class="detail-list">
+                            <li class="detail-item">
+                                <span class="detail-label">报备要求</span>
+                                <span class="detail-value">从速报备</span>
+                            </li>
+                            <li class="detail-item">
+                                <span class="detail-label">合同说明</span>
+                                <span class="detail-value">具体以合同为准</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div id="xuweinuclear" class="project-content">
+                <div class="project-header">
+                    <div class="project-title">连云港中核徐圩核电站</div>
+                    <div class="project-subtitle">土方运输 • 核电站建设</div>
+                </div>
+                <div class="project-details">
+                    <div class="detail-section">
+                        <div class="detail-title">项目概述</div>
+                        <ul class="detail-list">
+                            <li class="detail-item">
+                                <span class="detail-label">运输物料</span>
+                                <span class="detail-value">土方</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="detail-section">
+                        <div class="detail-title">车辆要求</div>
+                        <ul class="detail-list">
+                            <li class="detail-item">
+                                <span class="detail-label">车辆规格</span>
+                                <span class="detail-value">8.2m - 8.6m</span>
+                            </li>
+                            <li class="detail-item">
+                                <span class="detail-label">箱高要求</span>
+                                <span class="detail-value">1.8m - 2m</span>
+                            </li>
+                            <li class="detail-item">
+                                <span class="detail-label">净重要求</span>
+                                <span class="detail-value">≤ 80吨</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="detail-section">
+                        <div class="detail-title">运输详情</div>
+                        <ul class="detail-list">
+                            <li class="detail-item">
+                                <span class="detail-label">运输距离</span>
+                                <span class="detail-value">45公里 ± 3公里</span>
+                            </li>
+                            <li class="detail-item">
+                                <span class="detail-label">运输价格</span>
+                                <span class="detail-value">12.5元/吨</span>
+                            </li>
+                            <li class="detail-item">
+                                <span class="detail-label">结算方式</span>
+                                <span class="detail-value">日结</span>
+                            </li>
+                            <li class="detail-item">
+                                <span class="detail-label">作业时间</span>
+                                <span class="detail-value">24小时</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div id="henangold" class="project-content">
+                <div class="project-header">
+                    <div class="project-title">河南金矿工程</div>
+                    <div class="project-subtitle">项目洽谈中 • 敬请期待</div>
+                </div>
+                <div class="project-details">
+                    <div class="welcome-message">
+                        <span class="welcome-icon">🏗️</span>
+                        <div class="welcome-title">项目详情完善中</div>
+                        <div class="welcome-desc">我们正在与项目方进行深入洽谈，具体的运输要求和价格信息将在确定后第一时间发布，请持续关注。</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="contact-section">
+            <div class="contact-title">联系我们</div>
+            <div class="contact-info">📱 郭经理：13705366364（微信同号）</div>
+        </div>
+    </main>
+
     <script>
-        function showSection(sectionId) {
-            document.querySelectorAll('.section').forEach(section => {
-                section.classList.remove('active');
-            });
-            document.getElementById(sectionId).classList.add('active');
-            document.querySelectorAll('button').forEach(btn => {
-                btn.classList.remove('active');
-            });
-            document.querySelector(`button[onclick="showSection('${sectionId}')"]`).classList.add('active');
+        let currentProject = 'xiaokouzi';
+
+        function toggleDrawer() {
+            const overlay = document.querySelector('.drawer-overlay');
+            const drawer = document.querySelector('.drawer');
+            
+            overlay.classList.add('active');
+            drawer.classList.add('active');
+            document.body.style.overflow = 'hidden';
         }
+
+        function closeDrawer() {
+            const overlay = document.querySelector('.drawer-overlay');
+            const drawer = document.querySelector('.drawer');
+            
+            overlay.classList.remove('active');
+            drawer.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        function selectProject(projectId, element) {
+            if (currentProject === projectId) {
+                closeDrawer();
+                return;
+            }
+
+            // 更新抽屉中的活动状态
+            document.querySelectorAll('.project-item').forEach(item => {
+                item.classList.remove('active');
+            });
+            element.classList.add('active');
+
+            // 更新主内容区域
+            document.querySelectorAll('.project-content').forEach(content => {
+                content.classList.remove('active');
+            });
+            
+            setTimeout(() => {
+                document.getElementById(projectId).classList.add('active');
+                currentProject = projectId;
+            }, 100);
+
+            // 关闭抽屉
+            setTimeout(() => {
+                closeDrawer();
+            }, 300);
+        }
+
+        // 点击空白处关闭抽屉
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                closeDrawer();
+            }
+        });
+
+        // 初始化：确保默认项目处于活动状态
+        document.addEventListener('DOMContentLoaded', function() {
+            const defaultItem = document.querySelector('.project-item.active');
+            if (defaultItem) {
+                defaultItem.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            }
+        });
     </script>
 </body>
 </html>
-
