@@ -393,6 +393,14 @@
         .project-display.active {
             animation: slideIn 0.5s ease;
         }
+
+        .project-content {
+            display: none;
+        }
+
+        .project-content.active {
+            display: block;
+        }
     </style>
 </head>
 <body>
@@ -667,15 +675,17 @@
             });
             element.classList.add('active');
 
-            // 更新主内容区域
+            // 隐藏当前项目内容
             document.querySelectorAll('.project-content').forEach(content => {
                 content.classList.remove('active');
             });
             
-            setTimeout(() => {
-                document.getElementById(projectId).classList.add('active');
+            // 显示新的项目内容
+            const newProject = document.getElementById(projectId);
+            if (newProject) {
+                newProject.classList.add('active');
                 currentProject = projectId;
-            }, 100);
+            }
 
             // 关闭抽屉
             setTimeout(() => {
