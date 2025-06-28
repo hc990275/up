@@ -1,59 +1,73 @@
 #!/bin/bash
 set -e
 
-# 安装依赖
-apt update
-apt install -y openssl
+# 配置
+FTP_PORT="21"
+PASSIVE_PORTS="60000 65535"
+PUBLIC_IP=$(curl -s ipv4.ip.sb || curl -s ipinfo.io/ip)
+FTP_DIR="/var/www"
 
-# 下载pure-ftpd最新二进制
-cd /usr/sbin/
-wget https://download.pureftpd.org/pub/pure-ftpd/releases/pure-ftpd-1.0.49.tar.gz
-tar -xzf pure-ftpd-1.0.49.tar.gz
-cd pure-ftpd-1.0.49
-./configure --with-everything --prefix=/usr --with-tls
+echo "📥 开始安装依赖..."
+apt update
+apt install -y build-essential wget curl openssl libssl-dev iptables
+
+echo "📦 下载Pure-FTPd源码..."
+cd /usr/local/src
+wget https://github.com/jedisct1/pure-ftpd/releases/download/1.0.51/pure-ftpd-1.0.51.tar.gz
+tar -zxvf pure-ftpd-1.0.51.tar.gz
+cd pure-ftpd-1.0.51
+
+echo "🔧 编译并安装..."
+./configure --with-everything --with-tls
 make
 make install
 
-# 创建FTP目录
-mkdir -p /var/www
-chmod -R 777 /var/www
-
-# 创建SSL证书
+echo "🔐 生成SSL证书..."
 mkdir -p /etc/ssl/private
 openssl req -x509 -nodes -days 3650 -newkey rsa:2048 \
 -keyout /etc/ssl/private/pure-ftpd.pem \
 -out /etc/ssl/private/pure-ftpd.pem \
--subj "/C=CN/ST=Beijing/L=Beijing/O=hyabcai/OU=FTP/CN=hy.abcai.online"
+-subj "/C=CN/ST=Beijing/L=Beijing/O=FTP/OU=PureFTP/CN=${PUBLIC_IP}"
 chmod 600 /etc/ssl/private/pure-ftpd.pem
 
-# 创建systemd服务
-cat >/etc/systemd/system/pure-ftpd.service <<EOF
+echo "📂 创建FTP根目录..."
+mkdir -p ${FTP_DIR}
+chmod -R 777 ${FTP_DIR}
+
+echo "⚙️ 创建Systemd服务..."
+cat > /etc/systemd/system/pure-ftpd.service <<EOF
 [Unit]
-Description=Pure-FTPd server
+Description=Pure-FTPd FTP server
 After=network.target
 
 [Service]
-ExecStart=/usr/sbin/pure-ftpd -A -E -R -H -j -J -lpuredb:/etc/pureftpd.pdb -O clf:/var/log/pureftpd.log -p 60000:65535 -P $(curl -s ifconfig.me) --tls=2 --anonroot=/var/www --noanonymousupload
+ExecStart=/usr/local/sbin/pure-ftpd -A -E -R -j -lpuredb:/etc/pure-ftpd/pureftpd.pdb -p ${PASSIVE_PORTS} -P ${PUBLIC_IP} --tls=1
+ExecStop=/bin/kill -TERM \$MAINPID
+Restart=always
 
 [Install]
 WantedBy=multi-user.target
 EOF
 
-# 防火墙
-ufw allow 21/tcp
-ufw allow 60000:65535/tcp
-ufw reload
-
-# 启动服务
 systemctl daemon-reload
 systemctl enable pure-ftpd
-systemctl restart pure-ftpd
+systemctl start pure-ftpd
 
+echo "🔥 配置防火墙端口..."
+iptables -I INPUT -p tcp --dport ${FTP_PORT} -j ACCEPT
+iptables -I INPUT -p tcp --dport 60000:65535 -j ACCEPT
+iptables-save > /etc/iptables.rules
+
+echo "👤 创建匿名用户（可选）"
+groupadd ftpgroup || true
+useradd -g ftpgroup -d ${FTP_DIR} -s /sbin/nologin ftpuser || true
+chown ftpuser:ftpgroup ${FTP_DIR}
+
+echo "✅ 安装完成"
 echo "============================"
-echo "✅ FTP部署完成"
-echo "🌐 地址: $(curl -s ifconfig.me) 或 hy.abcai.online"
-echo "🚪 端口: 21"
-echo "📂 目录: /var/www"
+echo "🌐 地址: ${PUBLIC_IP}"
+echo "🚪 端口: ${FTP_PORT}"
+echo "📂 目录: ${FTP_DIR}"
 echo "🔐 模式: FTP over TLS (强制加密)"
-echo "👥 登录方式: 匿名 (anonymous)"
+echo "👥 登录方式: 匿名 (ftpuser) 或配置虚拟用户"
 echo "============================"
