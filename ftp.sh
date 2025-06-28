@@ -5,14 +5,14 @@
 # 域名：abcai.online
 # IP：43.165.68.5
 # FTP 目录：/var/www/
-# FTP 用户：990275，密码：990299
+# FTP 用户：Aa990275，密码：Aa990299
 # 支持主动和被动模式
 
 # 设置变量
 DOMAIN="abcai.online"
 SERVER_IP="43.165.68.5"
-FTP_USER="990275"
-FTP_PASS="990299"
+FTP_USER="Aa990275"
+FTP_PASS="Aa990299"
 FTP_DIR="/var/www/"
 
 # 检查是否以 root 权限运行
