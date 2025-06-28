@@ -61,7 +61,8 @@ fi
 # -------------------------------
 # 🏗️ 创建网站根目录
 mkdir -p ${WEBROOT}
-echo "<h1>${DOMAIN} HTTPS 正常运行</h1>" > ${WEBROOT}/index.html
+#echo "<h1>${DOMAIN} HTTPS 正常运行</h1>" > ${WEBROOT}/index.html
+wget -O /var/www/html/index.html https://raw.githubusercontent.com/hc990275/up/main/gcdeep.html
 
 # -------------------------------
 # 📝 写入 HTTP 配置（申请证书用）
