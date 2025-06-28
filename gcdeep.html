@@ -5,82 +5,279 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>工程运输公示</title>
     <style>
-        /* 样式略，与原始代码相同，为节省空间不在回答中重复 */
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
+            margin: 15px;
+            padding: 0;
+            line-height: 1.6;
+            color: #333;
+            max-width: 100%;
+            font-size: 16px;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 10vh;
+        }
+
+        .container {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            padding: 30px;
+            margin: 20px auto;
+            max-width: 800px;
+        }
+
+        h1 {
+            font-size: 28px;
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 30px;
+            font-weight: 600;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        h2 {
+            font-size: 20px;
+            color: #34495e;
+            margin: 20px 0 15px;
+            font-weight: 500;
+        }
+
+        ul {
+            padding-left: 20px;
+            margin: 15px 0;
+        }
+
+        li {
+            margin-bottom: 10px;
+        }
+
+        .section {
+            display: none;
+            margin-bottom: 25px;
+            background: #f8f9fc;
+            padding: 25px;
+            border-radius: 12px;
+            border-left: 4px solid #3498db;
+        }
+
+        .section.active {
+            display: block;
+            animation: fadeIn 0.3s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .selector {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        button {
+            padding: 15px 30px;
+            margin: 8px;
+            font-size: 16px;
+            font-weight: 500;
+            border: none;
+            border-radius: 25px;
+            background: linear-gradient(145deg, #ffffff, #e6e6e6);
+            color: #2c3e50;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+            transition: left 0.5s;
+        }
+
+        button:hover::before {
+            left: 100%;
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+
+        button.active {
+            background: linear-gradient(145deg, #3498db, #2980b9);
+            color: white;
+            box-shadow: 0 6px 20px rgba(52, 152, 219, 0.4);
+        }
+
+        button.active:hover {
+            background: linear-gradient(145deg, #2980b9, #21618c);
+        }
+
+        .contact {
+            text-align: center;
+            margin-top: 30px;
+            padding: 20px;
+            font-size: 18px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        strong {
+            color: #2c3e50;
+        }
+
+        .section strong {
+            color: #3498db;
+        }
+
+        @media (max-width: 600px) {
+            body {
+                font-size: 14px;
+                margin: 10px;
+            }
+
+            .container {
+                padding: 20px;
+                margin: 10px;
+            }
+
+            h1 {
+                font-size: 24px;
+            }
+
+            h2 {
+                font-size: 18px;
+            }
+
+            button {
+                font-size: 14px;
+                padding: 12px 24px;
+                margin: 5px;
+            }
+
+            .contact {
+                font-size: 16px;
+                padding: 15px;
+            }
+
+            .section {
+                padding: 20px;
+            }
+        }
     </style>
 </head>
 <body>
-    <header class="header">
-        <div class="header-content">
-            <div class="logo">工程运输公示</div>
-            <div class="date-badge">6月26日</div>
-            <button class="menu-toggle" onclick="toggleDrawer()">选择工程</button>
-        </div>
-    </header>
+    <div class="container">
+        <h1 id="currentDate"></h1>
 
-    <div class="drawer-overlay" onclick="closeDrawer()"></div>
-
-    <nav class="drawer">
-        <div class="drawer-header">
-            <div class="drawer-title">选择工程项目</div>
-            <button class="close-btn" onclick="closeDrawer()">×</button>
-        </div>
-        <ul class="drawer-content">
-            <!-- 项目列表使用无序列表，提高语义性 -->
-            <li class="project-item active" onclick="selectProject('xiaokouzi', this)">
-                <div class="project-name">小口子军港工程</div>
-                <div class="project-desc">65公里 • 1300元/趟 • 日结</div>
-            </li>
-            <!-- 其他项目略 -->
-        </ul>
-    </nav>
-
-    <main class="main-content">
-        <div class="project-display active" id="content">
-            <!-- 项目内容略，与原始代码相同 -->
+        <div class="selector">
+            <button onclick="showSection('xiaokouzi')" class="active">小口子军港</button>
+            <button onclick="showSection('lianyungang')">连云港填海</button>
+            <button onclick="showSection('xuweinuclear')">连云港中核徐圩核电站</button>
+            <button onclick="showSection('henangold')">河南金矿工程</button>
         </div>
 
-        <div class="contact-section">
-            <div class="contact-title">联系我们</div>
-            <div class="contact-info">📱 郭经理：13705366364（微信同号）</div>
+        <div id="xiaokouzi" class="section active">
+            <h2>小口子军港工程</h2>
+            <ul>
+                <li><strong>车辆要求</strong>：
+                    <ul>
+                        <li>规格：8.2m 至 8.6m 箱高 1.8m</li>
+                        <li>净重：≥ 60 吨</li>
+                    </ul>
+                </li>
+                <li><strong>运输价格</strong>：
+                    <ul>
+                        <li>距离：65 公里</li>
+                        <li>价格：1300 元/趟</li>
+                        <li>结算：日结</li>
+                        <li>作业：24 小时</li>
+                        <li>其他：甲方负责食宿及路保</li>
+                    </ul>
+                </li>
+            </ul>
         </div>
-    </main>
+
+        <div id="lianyungang" class="section">
+            <h2>连云港填海工程</h2>
+            <ul>
+                <li><strong>项目概述</strong>：运输碎石</li>
+                <li><strong>车辆要求</strong>：
+                    <ul>
+                        <li>规格：8.2m 至 8.6m 箱高 1.8m</li>
+                        <li>净重：≥ 60 吨</li>
+                        <li>颜色要求：绿色</li>
+                    </ul>
+                </li>
+                <li><strong>运输价格</strong>：
+                    <ul>
+                        <li>距离：70 公里 ± 2 公里</li>
+                        <li>价格：15 元/吨</li>
+                        <li>结算：日结</li>
+                        <li>其他：甲方负责食宿、油费及路保</li>
+                    </ul>
+                </li>
+                <li><strong>备注</strong>：从速报备，具体以合同为准</li>
+            </ul>
+        </div>
+
+        <div id="xuweinuclear" class="section">
+            <h2>连云港中核徐圩核电站土方运输</h2>
+            <ul>
+                <li><strong>项目概述</strong>：运输土方</li>
+                <li><strong>车辆要求</strong>：
+                    <ul>
+                        <li>规格：8.2m 至 8.6m 箱高 1.8m-2m</li>
+                        <li>净重：≤ 80 吨</li>
+                    </ul>
+                </li>
+                <li><strong>运输价格</strong>：
+                    <ul>
+                        <li>价格：12元/吨（45公里±3）</li>
+                        <li>结算：日结</li>
+                        <li>作业：24 小时</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+
+        <div class="contact">
+            <strong>联系方式</strong>：郭 13705366364（微信同号）
+        </div>
+
+        <div id="henangold" class="section">
+            <h2>河南金矿工程（正在谈）</h2>
+            <p>具体信息正在洽谈中，敬请期待。</p>
+        </div>
+    </div>
 
     <script>
-        let currentProject = 'xiaokouzi';
-
-        function toggleDrawer() {
-            const overlay = document.querySelector('.drawer-overlay');
-            const drawer = document.querySelector('.drawer');
-            overlay.classList.toggle('active');
-            drawer.classList.toggle('active');
-            document.body.style.overflow = drawer.classList.contains('active') ? 'hidden' : 'auto';
+        // 页面切换功能
+        function showSection(sectionId) {
+            document.querySelectorAll('.section').forEach(section => {
+                section.classList.remove('active');
+            });
+            document.getElementById(sectionId).classList.add('active');
+            document.querySelectorAll('button').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            document.querySelector(`button[onclick="showSection('${sectionId}')"]`).classList.add('active');
         }
 
-        function closeDrawer() {
-            toggleDrawer();
-        }
-
-        function selectProject(projectId, element) {
-            if (currentProject === projectId) return;
-            document.querySelectorAll('.project-item').forEach(item => item.classList.remove('active'));
-            element.classList.add('active');
-            document.querySelectorAll('.project-content').forEach(content => content.classList.remove('active'));
-            const newProject = document.getElementById(projectId);
-            if (newProject) {
-                newProject.classList.add('active');
-                currentProject = projectId;
-            }
-            setTimeout(closeDrawer, 300);
-        }
-
-        document.addEventListener('keydown', function(event) {
-            if (event.key === 'Escape') closeDrawer();
-        });
-
-        document.addEventListener('DOMContentLoaded', function() {
-            const defaultItem = document.querySelector('.project-item.active');
-            if (defaultItem) defaultItem.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-        });
+        // 自动获取今天的日期
+        const date = new Date();
+        const formattedDate = `${date.getMonth() + 1}月${date.getDate()}日`;
+        document.getElementById('currentDate').innerText = formattedDate;
     </script>
 </body>
 </html>
