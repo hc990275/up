@@ -20,20 +20,20 @@ echo "<h1>abcai.online HTTPS 正常运行</h1>" > /var/www/html/index.html
 # ----------- 防火墙设置 ----------
 echo "🧱 开放防火墙端口 80 和 443..."
 ufw allow 'Nginx Full' || true
-ufw allow 88
-ufw allow 444
+ufw allow 80
+ufw allow 443
 
 # ----------- 写入Nginx配置 ----------
 echo "📜 写入Nginx配置..."
 cat > /etc/nginx/sites-available/abcai.conf <<EOF
 server {
-    listen 88;
+    listen 80;
     server_name www.abcai.online abcai.online;
     return 301 https://\$host\$request_uri;
 }
 
 server {
-    listen 444 ssl;
+    listen 443 ssl;
     server_name www.abcai.online abcai.online;
 
     root /var/www/html;
