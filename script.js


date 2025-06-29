@@ -1,0 +1,29 @@
+const init = () => {
+    setDate();
+    setupEventListeners();
+};
+
+const setDate = () => {
+    const date = new Date();
+    const options = { year: 'numeric', month: 'long', day: 'numeric' };
+    document.getElementById('currentDate').innerText = date.toLocaleDateString('zh-CN', options);
+};
+
+const showSection = (sectionId) => {
+    document.querySelectorAll('.section').forEach(section => {
+        section.classList.remove('active');
+    });
+    document.getElementById(sectionId).classList.add('active');
+    document.querySelectorAll('.selector button').forEach(btn => {
+        btn.classList.remove('active');
+    });
+    document.querySelector(`button[data-section="${sectionId}"]`).classList.add('active');
+};
+
+const setupEventListeners = () => {
+    document.querySelectorAll('.selector button').forEach(btn => {
+        btn.addEventListener('click', () => showSection(btn.dataset.section));
+    });
+};
+
+window.onload = init;
