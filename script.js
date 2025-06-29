@@ -1,31 +1,36 @@
-const gameContainer = document.getElementById('game-container');
-const scoreElement = document.getElementById('score');
+const init = () => {
+    setDate();
+    setupEventListeners();
+};
 
-let score = 0;
+const setDate = () => {
+    const date = new Date();
+    const options = { year: 'numeric', month: 'long', day: 'numeric' };
+    document.getElementById('currentDate').innerText = date.toLocaleDateString('zh-CN', options);
+};
 
-// 创建气球
-function createBalloon() {
-    const balloon = document.createElement('div');
-    balloon.classList.add('balloon');
-
-    // 设置随机位置
-    balloon.style.left = `${Math.random() * 90}%`;
-    balloon.style.animationDuration = `${Math.random() * 3 + 3}s`;
-
-    // 点击气球得分
-    balloon.addEventListener('click', () => {
-        score++;
-        scoreElement.textContent = score;
-        balloon.remove(); // 移除点击的气球
+const showSection = (sectionId) => {
+    document.querySelectorAll('.section').forEach(section => {
+        section.classList.remove('active');
+        section.setAttribute('aria-hidden', 'true');
     });
+    const activeSection = document.getElementById(sectionId);
+    activeSection.classList.add('active');
+    activeSection.setAttribute('aria-hidden', 'false');
 
-    gameContainer.appendChild(balloon);
-
-    // 气球飞出屏幕时删除
-    balloon.addEventListener('animationend', () => {
-        balloon.remove();
+    document.querySelectorAll('.selector button').forEach(btn => {
+        btn.classList.remove('active');
+        btn.removeAttribute('aria-current');
     });
-}
+    const activeButton = document.querySelector(`button[data-section="${sectionId}"]`);
+    activeButton.classList.add('active');
+    activeButton.setAttribute('aria-current', 'true');
+};
 
-// 不断生成气球
-setInterval(createBalloon, 1000);
+const setupEventListeners = () => {
+    document.querySelectorAll('.selector button').forEach(btn => {
+        btn.addEventListener('click', () => showSection(btn.dataset.section));
+    });
+};
+
+window.onload = init;
