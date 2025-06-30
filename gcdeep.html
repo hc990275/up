@@ -4,177 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>工程运输公示</title>
-    <style>
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
-            margin: 15px;
-            padding: 0;
-            line-height: 1.6;
-            color: #333;
-            max-width: 100%;
-            font-size: 16px;
-            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-            min-height: 10vh;
-        }
-
-        .container {
-            background: white;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            padding: 30px;
-            margin: 20px auto;
-            max-width: 800px;
-        }
-
-        h1 {
-            font-size: 28px;
-            color: #2c3e50;
-            text-align: center;
-            margin-bottom: 30px;
-            font-weight: 600;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
-
-        h2 {
-            font-size: 20px;
-            color: #34495e;
-            margin: 20px 0 15px;
-            font-weight: 500;
-        }
-
-        ul {
-            padding-left: 20px;
-            margin: 15px 0;
-        }
-
-        li {
-            margin-bottom: 10px;
-        }
-
-        .section {
-            display: none;
-            margin-bottom: 25px;
-            background: #f8f9fc;
-            padding: 25px;
-            border-radius: 12px;
-            border-left: 4px solid #3498db;
-        }
-
-        .section.active {
-            display: block;
-            animation: fadeIn 0.3s ease-in;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .selector {
-            text-align: center;
-            margin-bottom: 30px;
-        }
-
-        button {
-            padding: 15px 30px;
-            margin: 8px;
-            font-size: 16px;
-            font-weight: 500;
-            border: none;
-            border-radius: 25px;
-            background: linear-gradient(145deg, #ffffff, #e6e6e6);
-            color: #2c3e50;
-            cursor: pointer;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-            position: relative;
-            overflow: hidden;
-        }
-
-        button::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
-            transition: left 0.5s;
-        }
-
-        button:hover::before {
-            left: 100%;
-        }
-
-        button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
-        }
-
-        button.active {
-            background: linear-gradient(145deg, #3498db, #2980b9);
-            color: white;
-            box-shadow: 0 6px 20px rgba(52, 152, 219, 0.4);
-        }
-
-        button.active:hover {
-            background: linear-gradient(145deg, #2980b9, #21618c);
-        }
-
-        .contact {
-            text-align: center;
-            margin-top: 30px;
-            padding: 20px;
-            font-size: 18px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            border-radius: 12px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-        }
-
-        strong {
-            color: #2c3e50;
-        }
-
-        .section strong {
-            color: #3498db;
-        }
-
-        @media (max-width: 600px) {
-            body {
-                font-size: 14px;
-                margin: 10px;
-            }
-
-            .container {
-                padding: 20px;
-                margin: 10px;
-            }
-
-            h1 {
-                font-size: 24px;
-            }
-
-            h2 {
-                font-size: 18px;
-            }
-
-            button {
-                font-size: 14px;
-                padding: 12px 24px;
-                margin: 5px;
-            }
-
-            .contact {
-                font-size: 16px;
-                padding: 15px;
-            }
-
-            .section {
-                padding: 20px;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="container">
@@ -232,60 +62,61 @@
         </div>
 
         <div id="xuweinuclear" class="section">
-    <h2>连云港中核徐圩核电站土方运输</h2>
-    <ul>
-        <li><strong>项目概述</strong>：运输土方</li>
-        <li><strong>车辆要求</strong>：
+            <h2>连云港中核徐圩核电站土方运输</h2>
             <ul>
-                <li>规格：8.2m 至 8.6m，箱高 1.8m-2m</li>
-                <li>净重：≤ 80 吨</li>
+                <li><strong>项目概述</strong>：运输土方</li>
+                <li><strong>车辆要求</strong>：
+                    <ul>
+                        <li>规格：8.2m 至 8.6m，箱高 1.8m-2m</li>
+                        <li>净重：≤ 80 吨</li>
+                    </ul>
+                </li>
+                <li><strong>运输价格（两种模式）</strong>：
+                    <ul>
+                        <li>距离：40公里 ± 3 公里</li>
+                        <li><strong>方式一</strong>：<br>
+                            - 价格：6.5 元/吨<br>
+                            - 条件：<span style="color:#e74c3c;">甲方管油管住，不管吃</span>
+                        </li>
+                        <li><strong>方式二</strong>：<br>
+                            - 价格：12 元/吨<br>
+                            - 条件：<span style="color:#e74c3c;">吃住油自理</span>
+                        </li>
+                    </ul>
+                </li>
+                <li><strong>结算方式</strong>：日结</li>
+                <li><strong>作业时间</strong>：24 小时作业</li>
             </ul>
-        </li>
-        <li><strong>运输价格（两种模式）</strong>：
+        </div>
+
+        <div id="henangold" class="section">
+            <h2>河南金矿工程</h2>
             <ul>
-                <li>距离：40公里 ± 3 公里</li>
-                <li><strong>方式一</strong>：<br>
-                    - 价格：6.5 元/吨<br>
-                    - 条件：<span style="color:#e74c3c;">甲方管油管住，不管吃</span>
+                <li><strong>运输情况</strong>：平运</li>
+                <li><strong>车辆要求</strong>：
+                    <ul>
+                        <li>规格：6.5m 至 7.6m</li>
+                        <li>要求：需安装甲方提供的 GPS 定位仪器（费用由车队承担）</li>
+                        <li>净重：60 吨</li>
+                    </ul>
                 </li>
-                <li><strong>方式二</strong>：<br>
-                    - 价格：12 元/吨<br>
-                    - 条件：<span style="color:#e74c3c;">吃住油自理</span>
+                <li><strong>运输价格</strong>：
+                    <ul>
+                        <li>距离：20 公里 ± 3 公里</li>
+                        <li>价格：15 元/吨</li>
+                        <li>结算方式：日结</li>
+                        <li>作业时间：12 小时</li>
+                    </ul>
                 </li>
+                <li><strong>备注</strong>：具体信息以合同为准</li>
             </ul>
-        </li>
-        <li><strong>结算方式</strong>：日结</li>
-        <li><strong>作业时间</strong>：24 小时作业</li>
-    </ul>
-</div>
+        </div>
 
         <div class="contact">
             <strong>联系方式</strong>：郭 13705366364（微信同号）
         </div>
-
-        <div id="henangold" class="section">
-            <h2>河南金矿工程（正在谈）</h2>
-            <p>具体信息正在洽谈中，敬请期待。</p>
-        </div>
     </div>
 
-    <script>
-        // 页面切换功能
-        function showSection(sectionId) {
-            document.querySelectorAll('.section').forEach(section => {
-                section.classList.remove('active');
-            });
-            document.getElementById(sectionId).classList.add('active');
-            document.querySelectorAll('button').forEach(btn => {
-                btn.classList.remove('active');
-            });
-            document.querySelector(`button[onclick="showSection('${sectionId}')"]`).classList.add('active');
-        }
-
-        // 自动获取今天的日期
-        const date = new Date();
-        const formattedDate = `${date.getMonth() + 1}月${date.getDate()}日`;
-        document.getElementById('currentDate').innerText = formattedDate;
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
