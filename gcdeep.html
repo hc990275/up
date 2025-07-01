@@ -1,306 +1,299 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>工程运输公示</title>
-  <style>
-    body {
-      font-family: "Segoe UI", Roboto, Arial, sans-serif;
-      margin: 0;
-      padding: 20px;
-      line-height: 1.6;
-      color: #2d3436;
-      font-size: 16px;
-      background: linear-gradient(to bottom right, #e3f2fd, #ffffff);
-    }
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>工程运输公示</title>
+<style>
+/* 样式同之前，无需修改，略 */
+body {
+  font-family: "Segoe UI", Roboto, Arial, sans-serif;
+  margin: 0;
+  padding: 20px;
+  line-height: 1.6;
+  color: #2d3436;
+  font-size: 16px;
+  background: linear-gradient(to bottom right, #e3f2fd, #ffffff);
+}
 
-    .container {
-      background: #ffffff;
-      border-radius: 16px;
-      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
-      padding: 30px;
-      max-width: 860px;
-      margin: auto;
-    }
+.container {
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+  padding: 30px;
+  max-width: 860px;
+  margin: auto;
+}
 
-    h1 {
-      font-size: 28px;
-      color: #1e3a8a;
-      text-align: center;
-      margin-bottom: 30px;
-      font-weight: 700;
-      text-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-    }
+h1 {
+  font-size: 28px;
+  color: #1e3a8a;
+  text-align: center;
+  margin-bottom: 30px;
+  font-weight: 700;
+}
 
-    h2 {
-      font-size: 22px;
-      color: #1e40af;
-      margin: 20px 0 15px;
-      font-weight: 600;
-    }
+h2 {
+  font-size: 22px;
+  color: #1e40af;
+  margin: 20px 0 15px;
+  font-weight: 600;
+}
 
-    ul {
-      padding-left: 20px;
-      margin: 10px 0;
-    }
+ul {
+  padding-left: 20px;
+  margin: 10px 0;
+}
 
-    li {
-      margin-bottom: 10px;
-    }
+li {
+  margin-bottom: 10px;
+}
 
-    .section {
-      display: none;
-      padding: 25px;
-      border-radius: 12px;
-      background: #f1f5f9;
-      border-left: 5px solid #3b82f6;
-      margin-bottom: 25px;
-      animation: fadeIn 0.4s ease-in-out;
-    }
+.section {
+  display: none;
+  padding: 25px;
+  border-radius: 12px;
+  background: #f1f5f9;
+  border-left: 5px solid #3b82f6;
+  margin-bottom: 25px;
+}
 
-    .section.active {
-      display: block;
-    }
+.section.active {
+  display: block;
+}
 
-    @keyframes fadeIn {
-      from {
-        opacity: 0;
-        transform: translateY(10px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
+.selector {
+  text-align: center;
+  margin-bottom: 30px;
+}
 
-    .selector {
-      text-align: center;
-      margin-bottom: 30px;
-    }
+button {
+  padding: 12px 26px;
+  margin: 6px;
+  font-size: 15px;
+  font-weight: 500;
+  border: none;
+  border-radius: 25px;
+  background: linear-gradient(145deg, #ffffff, #dfe9f3);
+  color: #1f2937;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
 
-    button {
-      padding: 12px 26px;
-      margin: 6px;
-      font-size: 15px;
-      font-weight: 500;
-      border: none;
-      border-radius: 25px;
-      background: linear-gradient(145deg, #ffffff, #dfe9f3);
-      color: #1f2937;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      position: relative;
-      overflow: hidden;
-      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
-    }
+button:hover {
+  transform: translateY(-1.5px);
+}
 
-    button::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: -100%;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
-      transition: left 0.5s;
-    }
+button.active {
+  background: linear-gradient(145deg, #2563eb, #1e40af);
+  color: white;
+}
 
-    button:hover::before {
-      left: 100%;
-    }
+.contact {
+  text-align: center;
+  margin-top: 40px;
+  padding: 20px;
+  font-size: 18px;
+  background: linear-gradient(to right, #6366f1, #3b82f6);
+  color: white;
+  border-radius: 12px;
+}
 
-    button:hover {
-      transform: translateY(-1.5px);
-      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
-    }
+@media (max-width: 600px) {
+  body {
+    font-size: 14px;
+    padding: 15px;
+  }
 
-    button.active {
-      background: linear-gradient(145deg, #2563eb, #1e40af);
-      color: white;
-      box-shadow: 0 5px 15px rgba(37, 99, 235, 0.4);
-    }
+  .container {
+    padding: 20px;
+    margin: 10px;
+  }
 
-    button.active:hover {
-      background: linear-gradient(145deg, #1e40af, #1e3a8a);
-    }
+  h1 {
+    font-size: 24px;
+  }
 
-    .contact {
-      text-align: center;
-      margin-top: 40px;
-      padding: 20px;
-      font-size: 18px;
-      background: linear-gradient(to right, #6366f1, #3b82f6);
-      color: white;
-      border-radius: 12px;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-    }
+  h2 {
+    font-size: 18px;
+  }
 
-    strong {
-      color: #1e40af;
-    }
+  button {
+    font-size: 13px;
+    padding: 10px 20px;
+    margin: 4px;
+  }
 
-    .section strong {
-      color: #2563eb;
-    }
+  .contact {
+    font-size: 16px;
+    padding: 15px;
+  }
 
-    @media (max-width: 600px) {
-      body {
-        font-size: 14px;
-        padding: 15px;
-      }
-
-      .container {
-        padding: 20px;
-        margin: 10px;
-      }
-
-      h1 {
-        font-size: 24px;
-      }
-
-      h2 {
-        font-size: 18px;
-      }
-
-      button {
-        font-size: 13px;
-        padding: 10px 20px;
-        margin: 4px;
-      }
-
-      .contact {
-        font-size: 16px;
-        padding: 15px;
-      }
-
-      .section {
-        padding: 18px;
-      }
-    }
-  </style>
+  .section {
+    padding: 18px;
+  }
+}
+</style>
 </head>
 <body>
-  <div class="container">
-    <h1 id="currentDate"></h1>
+<div class="container">
+<h1 id="currentDate"></h1>
 
-    <div class="selector">
-      <button onclick="showSection('lianyungang')" class="active">连云港填海</button>
-      <button onclick="showSection('henangold')">河南金矿</button>
-      <button onclick="showSection('xuweinuclear')">中核核电站</button>
-      <button onclick="showSection('xiaokouzi')">小口子</button>
-    </div>
+<div class="selector">
+  <button onclick="showSection('lianyungang')" class="active">连云港填海</button>
+  <button onclick="showSection('henangold')">河南金矿</button>
+  <button onclick="showSection('xuweinuclear')">中核核电站</button>
+  <button onclick="showSection('xiaokouzi')">小口子</button>
+  <button onclick="showSection('binzhou')" >滨州港运输</button>
+</div>
 
-    <div id="lianyungang" class="section active">
-      <h2>连云港填海工程</h2>
+<!-- 原有工程（略，内容未变） -->
+
+<div id="lianyungang" class="section active">
+  <h2>连云港填海工程</h2>
+  <ul>
+    <li><strong>项目概述</strong>：运输碎石</li>
+    <li><strong>车辆要求</strong>：
       <ul>
-        <li><strong>项目概述</strong>：运输碎石</li>
-        <li><strong>车辆要求</strong>：
-          <ul>
-            <li>规格：8.2m 至 8.6m 箱高 1.8m</li>
-            <li>净重：≥ 60 吨</li>
-            <li>颜色要求：绿色</li>
-          </ul>
-        </li>
-        <li><strong>运输价格</strong>：
-          <ul>
-            <li>距离：70 公里 ± 2 公里</li>
-            <li>价格：15 元/吨</li>
-            <li>结算：日结</li>
-            <li>其他：甲方负责食宿、油费及路保</li>
-          </ul>
-        </li>
-        <li><strong>备注</strong>：从速报备，具体以合同为准</li>
+        <li>规格：8.2m 至 8.6m 箱高 1.8m</li>
+        <li>净重：≥ 60 吨</li>
+        <li>颜色要求：绿色</li>
       </ul>
-    </div>
-
-    <div id="henangold" class="section">
-      <h2>河南金矿工程</h2>
+    </li>
+    <li><strong>运输价格</strong>：
       <ul>
-        <li><strong>运输情况</strong>：平运</li>
-        <li><strong>车辆要求</strong>：
-          <ul>
-            <li>规格：6.5m 至 7.6m</li>
-            <li>需安装甲方提供的 GPS 定位仪器（费用车队出）</li>
-          </ul>
-        </li>
-        <li><strong>运输价格</strong>：
-          <ul>
-            <li>距离：20 公里 ± 3 公里</li>
-            <li>价格：15 元/吨</li>
-            <li>结算：日结</li>
-            <li>作业时间：目前 12 小时</li>
-          </ul>
-        </li>
+        <li>距离：70 公里 ± 2 公里</li>
+        <li>价格：15 元/吨</li>
+        <li>结算：日结</li>
+        <li><span style="color:#e74c3c;">甲方负责食宿、油费及路保</span></li>
       </ul>
-    </div>
+    </li>
+    <li><strong>备注</strong>：从速报备，具体以合同为准</li>
+  </ul>
+</div>
 
-    <div id="xuweinuclear" class="section">
-      <h2>中核徐圩核电站土方运输</h2>
+<div id="henangold" class="section">
+  <h2>河南金矿工程</h2>
+  <ul>
+    <li><strong>运输情况</strong>：平运</li>
+    <li><strong>车辆要求</strong>：
       <ul>
-        <li><strong>项目概述</strong>：运输土方</li>
-        <li><strong>车辆要求</strong>：
-          <ul>
-            <li>规格：8.2m 至 8.6m，箱高 1.8m-2m</li>
-            <li>净重：≤ 80 吨</li>
-          </ul>
-        </li>
-        <li><strong>运输价格（两种模式）</strong>：
-          <ul>
-            <li>距离：40公里 ± 3 公里</li>
-            <li><strong>方式一</strong>：<br>价格：6.5 元/吨<br>条件：<span style="color:#e74c3c;">甲方管油管住，不管吃</span></li>
-            <li><strong>方式二</strong>：<br>价格：12 元/吨<br>条件：<span style="color:#e74c3c;">吃住油自理</span></li>
-          </ul>
-        </li>
-        <li><strong>结算方式</strong>：日结</li>
-        <li><strong>作业时间</strong>：24 小时作业</li>
+        <li>规格：6.5m 至 7.6m</li>
+        <li><span style="color:#e74c3c;">需安装甲方提供的 GPS（费用车队出）</span></li>
       </ul>
-    </div>
-
-    <div id="xiaokouzi" class="section">
-      <h2>小口子军港工程</h2>
+    </li>
+    <li><strong>运输价格</strong>：
       <ul>
-        <li><strong>车辆要求</strong>：
-          <ul>
-            <li>规格：8.2m 至 8.6m 箱高 1.8m</li>
-            <li>净重：≥ 60 吨</li>
-          </ul>
-        </li>
-        <li><strong>运输价格</strong>：
-          <ul>
-            <li>距离：65 公里</li>
-            <li>价格：1300 元/趟</li>
-            <li>结算：日结</li>
-            <li>作业：24 小时</li>
-            <li>其他：甲方负责食宿及路保</li>
-          </ul>
-        </li>
+        <li>距离：20 公里 ± 3 公里</li>
+        <li>价格：15 元/吨</li>
+        <li>结算：日结</li>
+        <li>作业时间：12 小时</li>
+        <li><span style="color:#e74c3c;">吃住油自理</span></li>
       </ul>
-    </div>
+    </li>
+  </ul>
+</div>
 
-    <div class="contact">
-      <strong>联系方式</strong>：郭 13705366364（微信同号）
-    </div>
-  </div>
+<div id="xuweinuclear" class="section">
+  <h2>中核徐圩核电站土方运输</h2>
+  <ul>
+    <li><strong>项目概述</strong>：运输土方</li>
+    <li><strong>车辆要求</strong>：
+      <ul>
+        <li>规格：8.2m 至 8.6m，箱高 1.8m-2m</li>
+        <li>净重：≤ 80 吨</li>
+      </ul>
+    </li>
+    <li><strong>运输价格（两种模式）</strong>：
+      <ul>
+        <li>距离：40公里 ± 3 公里</li>
+        <li><strong>方式一</strong>：6.5 元/吨（<span style="color:#e74c3c;">甲方管油管住，不管吃</span>）</li>
+        <li><strong>方式二</strong>：12 元/吨（<span style="color:#e74c3c;">吃住油自理</span>）</li>
+      </ul>
+    </li>
+    <li><strong>结算方式</strong>：日结</li>
+    <li><strong>作业时间</strong>：24 小时</li>
+  </ul>
+</div>
 
-  <script>
-    // 页面切换功能
-    function showSection(sectionId) {
-      document.querySelectorAll('.section').forEach(section => {
-        section.classList.remove('active');
-      });
-      document.getElementById(sectionId).classList.add('active');
+<div id="xiaokouzi" class="section">
+  <h2>小口子军港工程</h2>
+  <ul>
+    <li><strong>车辆要求</strong>：
+      <ul>
+        <li>规格：8.2m 至 8.6m，箱高 1.8m</li>
+        <li>净重：≥ 60 吨</li>
+      </ul>
+    </li>
+    <li><strong>运输价格</strong>：
+      <ul>
+        <li>距离：65 公里</li>
+        <li>价格：1300 元/趟</li>
+        <li>结算：日结</li>
+        <li>作业时间：24 小时</li>
+        <li><span style="color:#e74c3c;">甲方负责食宿及路保</span></li>
+      </ul>
+    </li>
+  </ul>
+</div>
 
-      document.querySelectorAll('button').forEach(btn => {
-        btn.classList.remove('active');
-      });
-      document.querySelector(`button[onclick="showSection('${sectionId}')"]`).classList.add('active');
-    }
+<!-- 新增项目 滨州港 -->
+<div id="binzhou" class="section">
+  <h2>滨州港内运输项目</h2>
+  <ul>
+    <li><strong>项目概述</strong>：石方运输</li>
+    <li><strong>车辆要求</strong>：
+      <ul>
+        <li>规格：8.2m 至 8.6m，厢高 1.5 至 1.8 米</li>
+        <li>路保净重：50 吨</li>
+      </ul>
+    </li>
+    <li><strong>运输价格</strong>：
+      <ul>
+        <li>距离：255 公里 ± 5 公里</li>
+        <li>单趟价格：2200 元</li>
+        <li>结算方式：日结</li>
+        <li>作业时间：24 小时</li>
+      </ul>
+    </li>
+    <li><strong>合同工期</strong>：
+      <ul>
+        <li>合同：一年一签</li>
+        <li>整体工期：3～5 年</li>
+        <li>组队要求：50 部车为一组</li>
+      </ul>
+    </li>
+    <li><strong>其他条件</strong>：
+      <ul>
+        <li><span style="color:#e74c3c;">甲方包油、包高速费，吃住自理</span></li>
+      </ul>
+    </li>
+  </ul>
+</div>
 
-    // 自动获取今天的日期（年/月/日）
-    const date = new Date();
-    const formattedDate = `${date.getFullYear()}年${date.getMonth() + 1}月${date.getDate()}日`;
-    document.getElementById('currentDate').innerText = formattedDate;
-  </script>
+<div class="contact">
+  <strong>联系方式</strong>：郭 13705366364（微信同号）
+</div>
+</div>
+
+<script>
+function showSection(sectionId) {
+  document.querySelectorAll('.section').forEach(section => {
+    section.classList.remove('active');
+  });
+  document.getElementById(sectionId).classList.add('active');
+
+  document.querySelectorAll('button').forEach(btn => {
+    btn.classList.remove('active');
+  });
+  document.querySelector(`button[onclick="showSection('${sectionId}')"]`).classList.add('active');
+}
+
+const date = new Date();
+const formattedDate = `${date.getFullYear()}年${date.getMonth() + 1}月${date.getDate()}日`;
+document.getElementById('currentDate').innerText = formattedDate;
+</script>
 </body>
 </html>
