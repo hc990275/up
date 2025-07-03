@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>工程运输公示</title>
+<title id="pageTitle">工程运输公示</title>
 <style>
 /* 样式同之前，无需修改，略 */
 body {
@@ -139,7 +139,7 @@ button.active {
 </head>
 <body>
 <div class="container">
-<h1 id="currentDate"></h1>
+<h1 id="titleDate">工程运输公示</h1>
 
 <div class="selector">
   <button onclick="showSection('lianyungang')" class="active">连云港填海</button>
@@ -147,6 +147,7 @@ button.active {
   <button onclick="showSection('xuweinuclear')">中核核电站</button>
   <button onclick="showSection('xiaokouzi')">小口子</button>
   <button onclick="showSection('binzhou')" >滨州港运输</button>
+  <button onclick="showSection('tangshan')">唐山山皮土</button>
 </div>
 
 <!-- 原有工程（略，内容未变） -->
@@ -273,8 +274,41 @@ button.active {
   </ul>
 </div>
 
+<!-- 新增项目 唐山山皮土 -->
+<div id="tangshan" class="section">
+  <h2>唐山山皮土运输项目</h2>
+  <ul>
+    <li><strong>项目概述</strong>：运输山皮土</li>
+    <li><strong>车辆要求</strong>：
+      <ul>
+        <li>规格：7.6m 至 8.6m，厢高 1.5 至 1.8 米</li>
+        <li>净重：≤ 55 吨</li>
+      </ul>
+    </li>
+    <li><strong>运输价格</strong>：
+      <ul>
+        <li>距离：150 公里（走高速）</li>
+        <li>价格：0.27 元/吨/公里</li>
+        <li>结算方式：日结</li>
+      </ul>
+    </li>
+    <li><strong>其他条件</strong>：
+      <ul>
+        <li><span style="color:#e74c3c;">甲方负责路保、高速费，吃住油自理</span></li>
+      </ul>
+    </li>
+  </ul>
+</div>
+
 <div class="contact">
   <strong>联系方式</strong>：郭 13705366364（微信同号）
+</div>
+<div style="text-align:center; margin-top: 20px;">
+  <a href="/gc.apk" download>
+    <button style="background: linear-gradient(145deg, #10b981, #059669); color: white;">
+      📥 下载公示APP
+    </button>
+  </a>
 </div>
 </div>
 
@@ -292,8 +326,12 @@ function showSection(sectionId) {
 }
 
 const date = new Date();
-const formattedDate = `${date.getFullYear()}年${date.getMonth() + 1}月${date.getDate()}日`;
-document.getElementById('currentDate').innerText = formattedDate;
+const year = date.getFullYear();
+const month = date.getMonth() + 1;
+const day = date.getDate();
+const fullTitle = `${year}年${month}月${day}日 工程运输公示`;
+document.title = fullTitle;
+document.getElementById("titleDate").innerText = fullTitle;
 </script>
 </body>
 </html>
